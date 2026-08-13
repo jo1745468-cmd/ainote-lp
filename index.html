@@ -19,6 +19,20 @@ a{color:inherit;text-decoration:none}
 .s-a{background:var(--bg)}
 .s-b{background:var(--bg2)}
 .s-c{background:var(--bg3)}
+/* LIGHT SECTION SKIN */
+.s-light{
+  --bg:#FAFAF8;--bg2:#F0EDE6;--bg3:#E8E4DC;
+  --text:#1A1612;--text-m:rgba(26,22,18,.65);--text-d:rgba(26,22,18,.38);
+  --bdr:rgba(26,22,18,.12);--bdr-w:rgba(26,22,18,.07);
+  background:#FAFAF8;color:#1A1612;
+}
+.s-light .faq-q{color:#1A1612}
+.s-light .faq-icon svg{stroke:rgba(26,22,18,.4)}
+.s-light .step-num{color:rgba(200,160,40,.4)}
+.s-light .tl-q{color:rgba(26,22,18,.5)}
+.s-light .showcase-tag{color:rgba(26,22,18,.55)}
+.s-light .service-card{background:#F0EDE6}
+.s-light .service-card.gold-card{background:linear-gradient(145deg,#1A1420,#211830)}
 .section{padding-block:clamp(64px,9vw,112px)}
 .section+.section{border-top:1px solid var(--bdr)}
 
@@ -241,7 +255,7 @@ a{color:inherit;text-decoration:none}
 </section>
 
 <!-- SHOWCASE -->
-<section class="s-a section" id="works" style="padding-top:clamp(56px,8vw,96px);padding-bottom:clamp(56px,8vw,96px)">
+<section class="s-light section" id="works" style="padding-top:clamp(56px,8vw,96px);padding-bottom:clamp(56px,8vw,96px)">
   <div class="wrap">
     <div class="showcase-intro reveal">
       <p class="eyebrow">WORKS</p>
@@ -318,7 +332,7 @@ a{color:inherit;text-decoration:none}
 </section>
 
 <!-- SERVICES -->
-<section class="s-a section" id="services">
+<section class="s-light section" id="services">
   <div class="wrap">
     <div class="split-h reveal">
       <div>
@@ -392,7 +406,7 @@ a{color:inherit;text-decoration:none}
 </section>
 
 <!-- PROCESS -->
-<section class="s-c section">
+<section class="s-light section">
   <div class="wrap">
     <div class="split-h reveal">
       <div>
@@ -411,7 +425,7 @@ a{color:inherit;text-decoration:none}
 </section>
 
 <!-- TRANSLATION -->
-<section class="s-a section">
+<section class="s-light section">
   <div class="wrap">
     <div class="reveal">
       <p class="eyebrow">TRANSLATION</p>
@@ -509,7 +523,7 @@ a{color:inherit;text-decoration:none}
 </section>
 
 <!-- FAQ -->
-<section class="s-c section" id="faq">
+<section class="s-light section" id="faq">
   <div class="wrap">
     <div class="reveal"><p class="eyebrow">FAQ</p><h2 class="heading" style="margin-top:12px">よくいただくご質問</h2></div>
     <div class="faq-list">

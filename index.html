@@ -1,172 +1,173 @@
 <title>AinoTe | 非常にハイクオリティなサイトを、御社のために。</title>
 <style>
 :root{
-  --gold:#C8A02A;--gold-lt:#E2BC45;
+  --gold:#C8A028;--gold-lt:#E2BC45;--gold-dim:rgba(200,160,40,.55);
+  --bg:#06040A;--bg2:#0C0918;--bg3:#130E1E;
+  --text:#F0EAD5;--text-m:rgba(240,234,213,.62);--text-d:rgba(240,234,213,.35);
+  --bdr:rgba(200,160,40,.18);--bdr-w:rgba(240,234,213,.07);
   --f-disp:"Hiragino Mincho ProN","Hiragino Mincho Pro","YuMincho","Yu Mincho",Georgia,serif;
   --f-body:"Hiragino Kaku Gothic ProN","Meiryo","Yu Gothic",-apple-system,sans-serif;
   --max-w:1240px;--pad:clamp(20px,5vw,64px);
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:var(--f-body);line-height:1.7;-webkit-font-smoothing:antialiased;background:#fff;color:#111827}
+body{font-family:var(--f-body);line-height:1.7;-webkit-font-smoothing:antialiased;background:var(--bg);color:var(--text)}
 a{color:inherit;text-decoration:none}
 :focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 
 /* section skins */
-.s-dark{background:#0F172A;color:#F0EAD5}
-.s-light{background:#fff;color:#111827}
-.s-warm{background:#F4F3F0;color:#111827}
+.s-a{background:var(--bg)}
+.s-b{background:var(--bg2)}
+.s-c{background:var(--bg3)}
+.section{padding-block:clamp(64px,9vw,112px)}
+.section+.section{border-top:1px solid var(--bdr)}
 
 /* typography */
 .eyebrow{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:500}
 .heading{font-family:var(--f-disp);font-size:clamp(26px,4vw,52px);line-height:1.25;letter-spacing:-.01em;text-wrap:balance}
 .display{font-family:var(--f-disp);font-size:clamp(34px,5.5vw,70px);line-height:1.18;letter-spacing:-.02em;text-wrap:balance}
-.body-lg{font-size:clamp(15px,1.4vw,17px);line-height:1.85;color:#6B7280}
-.muted-dark{color:rgba(240,234,213,.65)}
+.body-lg{font-size:clamp(15px,1.4vw,17px);line-height:1.85;color:var(--text-m)}
 
 /* layout */
 .wrap{max-width:var(--max-w);margin-inline:auto;padding-inline:var(--pad)}
-.section{padding-block:clamp(64px,9vw,112px)}
-.section+.section{border-top:1px solid #E5E7EB}
-.s-dark .section+.section{border-top-color:rgba(255,255,255,.08)}
+.split-h{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:56px}
+.split-h .eyebrow{margin-bottom:10px}
+@media(max-width:720px){.split-h{grid-template-columns:1fr}}
 
 /* reveal */
 .reveal{opacity:0;transform:translateY(18px);transition:opacity .55s ease,transform .55s ease}
 .reveal.visible{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}}
 
-/* split header */
-.split-h{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:56px}
-.split-h .eyebrow{margin-bottom:10px}
-@media(max-width:720px){.split-h{grid-template-columns:1fr}}
-
 /* buttons */
-.btn{display:inline-flex;align-items:center;justify-content:center;padding:11px 26px;border-radius:100px;font-size:14px;font-weight:500;transition:opacity .2s,background .2s,transform .15s;cursor:pointer;border:none}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:11px 26px;border-radius:100px;font-size:14px;font-weight:500;transition:opacity .2s,background .2s,transform .15s,box-shadow .25s;cursor:pointer;border:none}
 .btn:hover{transform:translateY(-1px)}
-.btn-gold{background:var(--gold);color:#0A0806}
-.btn-gold:hover{background:var(--gold-lt)}
-.btn-outline-light{background:transparent;color:#F0EAD5;border:1px solid rgba(240,234,213,.3)}
-.btn-outline-light:hover{border-color:#F0EAD5}
-.btn-outline-dark{background:transparent;color:#111827;border:1px solid #D1D5DB}
-.btn-outline-dark:hover{border-color:#111827}
+.btn-gold{background:var(--gold);color:#0A0806;animation:goldPulse 2.8s ease-in-out infinite}
+.btn-gold:hover{background:var(--gold-lt);animation:none;box-shadow:0 0 28px rgba(200,160,40,.45)}
+.btn-outline-light{background:transparent;color:var(--text);border:1px solid rgba(240,234,213,.28)}
+.btn-outline-light:hover{border-color:var(--text)}
 .btn-lg{padding:14px 36px;font-size:16px}
 
+@keyframes goldPulse{
+  0%,100%{box-shadow:0 0 0 0 rgba(200,160,40,.35)}
+  50%{box-shadow:0 0 22px 6px rgba(200,160,40,.15)}
+}
+@keyframes shimmer{
+  0%{background-position:-200% center}
+  100%{background-position:200% center}
+}
+
 /* NAV */
-.nav{position:fixed;top:0;inset-inline:0;z-index:100;background:rgba(15,23,42,.97);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.07)}
+.nav{position:fixed;top:0;inset-inline:0;z-index:100;background:rgba(6,4,10,.97);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--bdr)}
 .nav-inner{max-width:var(--max-w);margin-inline:auto;padding-inline:var(--pad);height:56px;display:flex;align-items:center;justify-content:space-between;gap:20px}
-.nav-logo{font-family:var(--f-disp);font-size:14px;letter-spacing:.1em;color:#F0EAD5}
+.nav-logo{font-family:var(--f-disp);font-size:14px;letter-spacing:.1em;color:var(--text)}
 .nav-logo span{color:var(--gold)}
 .nav-links{display:flex;align-items:center;gap:28px;list-style:none}
-.nav-links a{font-size:13px;color:rgba(240,234,213,.65);transition:color .2s}
-.nav-links a:hover{color:#F0EAD5}
+.nav-links a{font-size:13px;color:var(--text-m);transition:color .2s}
+.nav-links a:hover{color:var(--text)}
 @media(max-width:680px){.nav-links{display:none}}
 
 /* HERO */
-.hero{position:relative;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;padding-top:56px;background:#0F172A}
+.hero{position:relative;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;padding-top:56px;background:var(--bg)}
 #heroCanvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 .hero-body{position:relative;z-index:2;width:100%;max-width:var(--max-w);margin-inline:auto;padding-inline:var(--pad);padding-block:clamp(60px,8vw,100px);display:flex;flex-direction:column;gap:28px}
 .hero-label{display:flex;align-items:center;gap:10px;padding:7px 16px;border:1px solid rgba(200,160,42,.35);border-radius:100px;width:fit-content;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
 .hero-label::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--gold);animation:pulse 1.8s ease-in-out infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
-.hero-h1{font-family:var(--f-disp);font-size:clamp(32px,5.5vw,72px);line-height:1.18;font-weight:400;color:#F0EAD5}
+.hero-h1{font-family:var(--f-disp);font-size:clamp(32px,5.5vw,72px);line-height:1.18;font-weight:400;color:var(--text)}
 .hero-h1 .accent{color:var(--gold)}
-.hero-h1 .dim{color:rgba(240,234,213,.55)}
-.hero-sub{max-width:520px;font-size:clamp(14px,1.4vw,17px);color:rgba(240,234,213,.65);line-height:1.85}
+.hero-sub{max-width:520px;font-size:clamp(14px,1.4vw,17px);color:var(--text-m);line-height:1.85}
 .hero-ctas{display:flex;flex-wrap:wrap;gap:12px}
 
 /* SHOWCASE */
 .showcase-intro{text-align:center;max-width:680px;margin-inline:auto;margin-bottom:clamp(40px,6vw,64px)}
 .showcase-intro .eyebrow{margin-bottom:14px}
-.showcase-intro .heading{color:#F0EAD5;margin-bottom:14px}
-.showcase-intro p{font-size:15px;color:rgba(240,234,213,.6);line-height:1.8}
+.showcase-intro .heading{color:var(--text);margin-bottom:14px}
+.showcase-intro p{font-size:15px;color:var(--text-m);line-height:1.8}
 .showcase-frames{display:grid;grid-template-columns:1fr;gap:40px}
 .showcase-card{display:flex;flex-direction:column;gap:12px}
-.showcase-tag{display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:rgba(240,234,213,.5)}
+.showcase-tag{display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-m)}
 .showcase-tag::before{content:'';width:20px;height:1px;background:var(--gold)}
-.browser-frame{border-radius:8px;overflow:hidden;border:1px solid rgba(255,255,255,.1);box-shadow:0 32px 80px rgba(0,0,0,.5)}
-.browser-bar{background:#1E2A40;padding:9px 14px;display:flex;align-items:center;gap:8px}
+.browser-frame{border-radius:8px;overflow:hidden;border:1px solid var(--bdr);box-shadow:0 32px 80px rgba(0,0,0,.7)}
+.browser-bar{background:#0C0918;padding:9px 14px;display:flex;align-items:center;gap:8px}
 .b-dots{display:flex;gap:5px}
 .b-dot{width:10px;height:10px;border-radius:50%}
 .b-dot.r{background:#FF5F57}.b-dot.y{background:#FFBD2E}.b-dot.g{background:#28C840}
-.b-url{flex:1;background:rgba(255,255,255,.06);border-radius:4px;padding:4px 10px;font-size:11px;color:rgba(200,210,230,.5);letter-spacing:.04em}
+.b-url{flex:1;background:rgba(255,255,255,.05);border-radius:4px;padding:4px 10px;font-size:11px;color:rgba(200,210,230,.4);letter-spacing:.04em}
 .browser-content svg{width:100%;height:auto;display:block}
 
 /* STATS */
-.stats-row{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid #E5E7EB}
-.stat-cell{padding:clamp(28px,4vw,48px) clamp(14px,2.5vw,32px);border-right:1px solid #E5E7EB}
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--bdr)}
+.stat-cell{padding:clamp(28px,4vw,48px) clamp(14px,2.5vw,32px);border-right:1px solid var(--bdr)}
 .stat-cell:last-child{border-right:none}
 .stat-num{font-family:var(--f-disp);font-size:clamp(38px,5vw,64px);line-height:1;letter-spacing:-.03em;color:var(--gold);display:block;margin-bottom:10px;font-variant-numeric:tabular-nums}
-.stat-label{font-size:13px;color:#6B7280;line-height:1.6}
-@media(max-width:680px){.stats-row{grid-template-columns:repeat(2,1fr)}.stat-cell:nth-child(2){border-right:none}.stat-cell:nth-child(n+3){border-top:1px solid #E5E7EB}}
+.stat-label{font-size:13px;color:var(--text-m);line-height:1.6}
+@media(max-width:680px){.stats-row{grid-template-columns:repeat(2,1fr)}.stat-cell:nth-child(2){border-right:none}.stat-cell:nth-child(n+3){border-top:1px solid var(--bdr)}}
 
 /* SERVICES */
-.services-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:#E5E7EB;border:1px solid #E5E7EB;margin-top:56px}
-.service-card{background:#fff;padding:clamp(24px,3.5vw,44px);display:flex;flex-direction:column;gap:14px}
-.s-warm .services-grid{background:#E5E7EB}
-.s-warm .service-card{background:#F4F3F0}
-.svc-icon{width:38px;height:38px;border-radius:8px;background:rgba(200,160,42,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.services-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--bdr);border:1px solid var(--bdr);margin-top:56px}
+.service-card{background:var(--bg2);padding:clamp(24px,3.5vw,44px);display:flex;flex-direction:column;gap:14px;transition:border-color .3s,box-shadow .3s;border:1px solid transparent}
+.service-card:hover{border-color:rgba(200,160,40,.45);box-shadow:inset 0 0 32px rgba(200,160,40,.05),0 0 24px rgba(200,160,40,.08)}
+.svc-icon{width:38px;height:38px;border-radius:8px;background:rgba(200,160,42,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;border:1px solid var(--bdr)}
 .svc-icon svg{width:18px;height:18px;stroke:var(--gold);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
 .svc-title{font-family:var(--f-disp);font-size:clamp(17px,1.8vw,21px);line-height:1.35;font-weight:400}
-.svc-desc{font-size:14px;color:#6B7280;line-height:1.85}
+.svc-desc{font-size:14px;color:var(--text-m);line-height:1.85}
 @media(max-width:620px){.services-grid{grid-template-columns:1fr}}
 
 /* COMPARISON */
 .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-top:56px}
 .compare-table{width:100%;border-collapse:collapse;min-width:560px;font-size:14px}
-.compare-table th,.compare-table td{padding:15px 18px;text-align:left;border-bottom:1px solid #E5E7EB;vertical-align:top}
-.compare-table th{font-weight:500;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#9CA3AF;border-bottom:2px solid #E5E7EB}
+.compare-table th,.compare-table td{padding:15px 18px;text-align:left;border-bottom:1px solid var(--bdr-w);vertical-align:top}
+.compare-table th{font-weight:500;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-d);border-bottom:2px solid var(--bdr)}
 .compare-table th.hl{color:var(--gold)}
-.compare-table td.hl{color:#111827;font-weight:500}
-.compare-table td:not(.hl){color:#9CA3AF}
+.compare-table td.hl{color:var(--text);font-weight:500}
+.compare-table td:not(.hl){color:var(--text-d)}
 .compare-table tr:last-child td{border-bottom:none}
-.compare-table td:first-child{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#9CA3AF;white-space:nowrap}
+.compare-table td:first-child{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-d);white-space:nowrap}
 
 /* PROCESS */
-.process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#E5E7EB;border:1px solid #E5E7EB;margin-top:56px}
-.process-step{background:#F4F3F0;padding:clamp(22px,3vw,38px);display:flex;flex-direction:column;gap:12px}
-.step-num{font-family:var(--f-disp);font-size:clamp(32px,4vw,48px);line-height:1;color:#D1D5DB;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--bdr);border:1px solid var(--bdr);margin-top:56px}
+.process-step{background:var(--bg2);padding:clamp(22px,3vw,38px);display:flex;flex-direction:column;gap:12px}
+.step-num{font-family:var(--f-disp);font-size:clamp(32px,4vw,48px);line-height:1;color:rgba(200,160,40,.3);font-variant-numeric:tabular-nums;letter-spacing:-.02em}
 .step-title{font-family:var(--f-disp);font-size:clamp(17px,1.8vw,21px);line-height:1.3;font-weight:400}
-.step-desc{font-size:13px;color:#6B7280;line-height:1.8}
+.step-desc{font-size:13px;color:var(--text-m);line-height:1.8}
 @media(max-width:760px){.process-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:480px){.process-grid{grid-template-columns:1fr}}
 
 /* TRANSLATION */
 .tl-list{margin-top:56px}
-.tl-item{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid #E5E7EB;padding-block:clamp(20px,3vw,36px)}
-.tl-item:last-child{border-bottom:1px solid #E5E7EB}
-.tl-q{padding-right:clamp(16px,4vw,56px);font-size:clamp(14px,1.3vw,16px);color:#9CA3AF;line-height:1.75;font-style:italic}
-.tl-a{padding-left:clamp(16px,4vw,56px);border-left:1px solid #E5E7EB;font-size:clamp(14px,1.3vw,16px);line-height:1.75}
-@media(max-width:640px){.tl-item{grid-template-columns:1fr;gap:12px}.tl-q{padding-right:0;border-bottom:1px solid #E5E7EB;padding-bottom:12px}.tl-a{padding-left:0;border-left:none}}
+.tl-item{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--bdr);padding-block:clamp(20px,3vw,36px)}
+.tl-item:last-child{border-bottom:1px solid var(--bdr)}
+.tl-q{padding-right:clamp(16px,4vw,56px);font-size:clamp(14px,1.3vw,16px);color:var(--text-d);line-height:1.75;font-style:italic}
+.tl-a{padding-left:clamp(16px,4vw,56px);border-left:1px solid var(--bdr);font-size:clamp(14px,1.3vw,16px);line-height:1.75;color:var(--text)}
+@media(max-width:640px){.tl-item{grid-template-columns:1fr;gap:12px}.tl-q{padding-right:0;border-bottom:1px solid var(--bdr);padding-bottom:12px}.tl-a{padding-left:0;border-left:none}}
 
 /* PRICING */
-.pricing-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#E5E7EB;border:1px solid #E5E7EB;margin-top:56px}
-.pricing-card{background:#fff;padding:clamp(26px,4vw,50px);display:flex;flex-direction:column;gap:18px}
-.pricing-card.feat{background:#0F172A;color:#F0EAD5;border:none;position:relative;overflow:hidden}
-.pricing-card.feat::before{content:'';position:absolute;top:-80px;right:-80px;width:240px;height:240px;background:radial-gradient(circle,rgba(200,160,42,.12) 0%,transparent 70%);pointer-events:none}
-.p-label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#9CA3AF;font-weight:500}
-.feat .p-label{color:rgba(200,160,42,.65)}
+.pricing-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--bdr);border:1px solid var(--bdr);margin-top:56px}
+.pricing-card{background:var(--bg2);padding:clamp(26px,4vw,50px);display:flex;flex-direction:column;gap:18px}
+.pricing-card.feat{background:var(--bg3);border:1px solid rgba(200,160,40,.4);position:relative;overflow:hidden}
+.pricing-card.feat::before{content:'';position:absolute;top:-80px;right:-80px;width:240px;height:240px;background:radial-gradient(circle,rgba(200,160,42,.1) 0%,transparent 70%);pointer-events:none}
+.p-label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-d);font-weight:500}
+.feat .p-label{color:var(--gold-dim)}
 .p-name{font-family:var(--f-disp);font-size:clamp(18px,2.2vw,25px);line-height:1.35;font-weight:400}
 .p-price{font-family:var(--f-disp);font-size:clamp(30px,4.5vw,50px);line-height:1;letter-spacing:-.02em;font-variant-numeric:tabular-nums;color:var(--gold)}
 .p-price span{font-size:16px;opacity:.6;margin-right:2px}
-.p-sub{font-size:12px;color:#9CA3AF;margin-top:-10px}
-.feat .p-sub{color:rgba(240,234,213,.5)}
-.p-div{height:1px;background:#E5E7EB}
-.feat .p-div{background:rgba(255,255,255,.1)}
-.p-list{font-size:13px;color:#6B7280;line-height:2.1;list-style:none;display:flex;flex-direction:column;gap:1px}
-.feat .p-list{color:rgba(240,234,213,.7)}
-.p-note{font-size:11px;color:#9CA3AF;line-height:1.6;margin-top:-8px}
+.p-sub{font-size:12px;color:var(--text-d);margin-top:-10px}
+.p-div{height:1px;background:var(--bdr)}
+.p-list{font-size:13px;color:var(--text-m);line-height:2.1;list-style:none;display:flex;flex-direction:column;gap:1px}
+.p-note{font-size:11px;color:var(--text-d);line-height:1.6;margin-top:-8px}
 @media(max-width:580px){.pricing-grid{grid-template-columns:1fr}}
 
 /* FAQ */
 .faq-list{margin-top:56px}
-.faq-item{border-top:1px solid #E5E7EB}
-.faq-item:last-child{border-bottom:1px solid #E5E7EB}
-.faq-q{width:100%;background:none;border:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;padding-block:20px;text-align:left;font-family:var(--f-disp);font-size:clamp(15px,1.7vw,18px);color:#111827;line-height:1.4;font-weight:400}
-.faq-icon{flex-shrink:0;width:22px;height:22px;border:1px solid #D1D5DB;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:transform .3s,background .3s,border-color .3s}
-.faq-icon svg{width:10px;height:10px;stroke:#9CA3AF;fill:none;transition:stroke .3s}
+.faq-item{border-top:1px solid var(--bdr)}
+.faq-item:last-child{border-bottom:1px solid var(--bdr)}
+.faq-q{width:100%;background:none;border:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;padding-block:20px;text-align:left;font-family:var(--f-disp);font-size:clamp(15px,1.7vw,18px);color:var(--text);line-height:1.4;font-weight:400}
+.faq-icon{flex-shrink:0;width:22px;height:22px;border:1px solid var(--bdr);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:transform .3s,background .3s,border-color .3s}
+.faq-icon svg{width:10px;height:10px;stroke:var(--text-d);fill:none;transition:stroke .3s}
 .faq-item.open .faq-icon{background:var(--gold);border-color:var(--gold);transform:rotate(45deg)}
 .faq-item.open .faq-icon svg{stroke:#0A0806}
-.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .4s ease;font-size:14px;color:#6B7280;line-height:1.9}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .4s ease;font-size:14px;color:var(--text-m);line-height:1.9}
 .faq-item.open .faq-a{max-height:360px;padding-bottom:22px}
 
 /* CONTACT */
@@ -174,27 +175,27 @@ a{color:inherit;text-decoration:none}
 @media(max-width:700px){.contact-grid{grid-template-columns:1fr}}
 .contact-meta{display:flex;flex-direction:column;gap:12px;margin-top:24px}
 .cm-row{display:flex;gap:14px}
-.cm-dt{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#9CA3AF;white-space:nowrap;padding-top:2px;min-width:44px}
+.cm-dt{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-d);white-space:nowrap;padding-top:2px;min-width:44px}
 .cm-dd{font-size:15px}
 .contact-form{display:flex;flex-direction:column;gap:16px}
 .field{display:flex;flex-direction:column;gap:5px}
-.field label{font-size:13px;color:#6B7280}
+.field label{font-size:13px;color:var(--text-m)}
 .field label span{color:var(--gold);margin-left:2px}
-.field input,.field textarea{background:#F9F8F6;border:1px solid #E5E7EB;border-radius:4px;padding:11px 15px;font-size:15px;color:#111827;transition:border-color .2s;width:100%}
-.field input:focus,.field textarea:focus{outline:none;border-color:var(--gold);background:#fff}
+.field input,.field textarea{background:var(--bg2);border:1px solid var(--bdr);border-radius:4px;padding:11px 15px;font-size:15px;color:var(--text);transition:border-color .2s;width:100%}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--gold);background:var(--bg3)}
 .field textarea{resize:vertical;min-height:100px}
 .radio-group{display:flex;flex-wrap:wrap;gap:7px;margin-top:4px}
 .r-opt{position:relative}
 .r-opt input{position:absolute;opacity:0;width:0;height:0}
-.r-opt label{padding:6px 14px;border:1px solid #E5E7EB;border-radius:100px;font-size:13px;cursor:pointer;color:#6B7280;transition:all .2s;display:block}
+.r-opt label{padding:6px 14px;border:1px solid var(--bdr);border-radius:100px;font-size:13px;cursor:pointer;color:var(--text-m);transition:all .2s;display:block}
 .r-opt input:checked+label{background:var(--gold);color:#0A0806;border-color:var(--gold)}
 .r-opt label:hover{border-color:var(--gold)}
-.form-note{font-size:11px;color:#9CA3AF;text-align:center}
+.form-note{font-size:11px;color:var(--text-d);text-align:center}
 
 /* FOOTER */
-.footer{background:#0F172A;color:rgba(240,234,213,.5);padding-block:28px}
+.footer{background:var(--bg);color:var(--text-d);padding-block:28px;border-top:1px solid var(--bdr)}
 .footer-inner{max-width:var(--max-w);margin-inline:auto;padding-inline:var(--pad);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px}
-.footer-logo{font-family:var(--f-disp);font-size:14px;letter-spacing:.08em;color:rgba(240,234,213,.5)}
+.footer-logo{font-family:var(--f-disp);font-size:14px;letter-spacing:.08em;color:var(--text-d)}
 .footer-logo span{color:var(--gold)}
 .footer-copy{font-size:12px}
 </style>
@@ -208,7 +209,7 @@ a{color:inherit;text-decoration:none}
       <li><a href="#services">サービス</a></li>
       <li><a href="#pricing">料金</a></li>
       <li><a href="#faq">FAQ</a></li>
-      <li><a href="#contact" class="btn btn-gold" style="padding:8px 20px;font-size:13px">相談してみる</a></li>
+      <li><a href="#contact" class="btn btn-gold" style="padding:8px 20px;font-size:13px;animation:none;box-shadow:none">相談してみる</a></li>
     </ul>
   </div>
 </nav>
@@ -219,7 +220,7 @@ a{color:inherit;text-decoration:none}
   <div class="hero-body">
     <div class="hero-label">オンラインサポートサービス AinoTe</div>
     <h1 class="hero-h1">
-      <span style="color:#F0EAD5">あなたの仕事を見て、<br>設計する。</span>
+      <span>あなたの仕事を見て、<br>設計する。</span>
     </h1>
     <p style="font-size:clamp(18px,2.2vw,26px);color:rgba(240,234,213,.75);line-height:1.6;font-family:var(--f-disp);font-weight:400">非常にハイクオリティなサイトを、<br>御社のために。</p>
     <p class="hero-sub">ホームページ・LP制作から業務のオンラインサポートまで。<br>問い合わせが来るサイトを、ゼロから設計します。</p>
@@ -231,15 +232,206 @@ a{color:inherit;text-decoration:none}
 </section>
 
 <!-- SHOWCASE -->
-<section class="s-dark section" id="works" style="padding-top:clamp(56px,8vw,96px);padding-bottom:clamp(56px,8vw,96px)">
+<section class="s-a section" id="works" style="padding-top:clamp(56px,8vw,96px);padding-bottom:clamp(56px,8vw,96px)">
   <div class="wrap">
     <div class="showcase-intro reveal">
       <p class="eyebrow">WORKS</p>
-      <h2 class="heading" style="color:#F0EAD5;margin-bottom:14px">御社のサイトを、<br>このクオリティへ。</h2>
+      <h2 class="heading" style="margin-bottom:14px">御社のサイトを、<br>このクオリティへ。</h2>
       <p>業種・顧客・目的に合わせてゼロから設計します。<br>正しいサイトが一つあるだけで、問い合わせの質と量が変わります。</p>
     </div>
 
     <div class="showcase-frames reveal">
+
+      <!-- MAISON DE LUXE -->
+      <div class="showcase-card">
+        <span class="showcase-tag">ラグジュアリー・ハイエンド型</span>
+        <div class="browser-frame">
+          <div class="browser-bar">
+            <div class="b-dots"><div class="b-dot r"></div><div class="b-dot y"></div><div class="b-dot g"></div></div>
+            <div class="b-url">maison-de-luxe-tokyo.jp</div>
+          </div>
+          <div class="browser-content">
+<svg viewBox="0 0 1200 760" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+  <rect width="1200" height="760" fill="#080506"/>
+  <!-- announcement bar: dark crimson -->
+  <rect width="1200" height="26" fill="#7A1818"/>
+  <text x="600" y="17" text-anchor="middle" fill="#E8C830" font-size="11" font-family="sans-serif" font-weight="700">本日限定｜全品送料無料＆ポイント20倍キャンペーン開催中！</text>
+  <!-- white nav -->
+  <rect y="26" width="1200" height="58" fill="#fff"/>
+  <line x1="0" y1="84" x2="1200" y2="84" stroke="#E0DDD8" stroke-width="1"/>
+  <text x="56" y="62" fill="#111" font-size="11.5" font-weight="700" font-family="Georgia,serif" letter-spacing="2.5">MAISON DE LUXE TOKYO</text>
+  <text x="310" y="59" fill="#333" font-size="10.5" font-family="sans-serif" letter-spacing="1.2">NEW IN</text>
+  <text x="368" y="59" fill="#333" font-size="10.5" font-family="sans-serif" letter-spacing="1.2">BAGS</text>
+  <text x="408" y="59" fill="#333" font-size="10.5" font-family="sans-serif" letter-spacing="1.2">SHOES</text>
+  <text x="454" y="59" fill="#333" font-size="10.5" font-family="sans-serif" letter-spacing="1.2">WATCHES</text>
+  <text x="518" y="59" fill="#333" font-size="10.5" font-family="sans-serif" letter-spacing="1.2">ACCESSORIES</text>
+  <text x="620" y="59" fill="#CC2828" font-size="10.5" font-family="sans-serif" font-weight="700" letter-spacing="1.5">SALE</text>
+  <text x="1040" y="59" fill="#444" font-size="10.5" font-family="sans-serif">🔍</text>
+  <text x="1068" y="59" fill="#444" font-size="10.5" font-family="sans-serif">👤</text>
+  <text x="1098" y="59" fill="#444" font-size="10.5" font-family="sans-serif">🛒 (2)</text>
+  <!-- hero dark area -->
+  <rect y="84" width="1200" height="478" fill="#0A0808"/>
+  <!-- rock formation polygon shapes -->
+  <polygon points="0,562 0,430 100,380 180,440 260,380 310,400 340,460 380,440 420,562" fill="#1C1616"/>
+  <polygon points="820,562 810,460 840,420 900,380 960,420 1020,360 1090,310 1160,370 1200,340 1200,562" fill="#1E1818"/>
+  <polygon points="360,562 400,520 460,548 510,506 570,542 630,500 680,536 740,508 800,540 830,562" fill="#140E0E"/>
+  <!-- gold ambient glow left text area -->
+  <ellipse cx="290" cy="320" rx="260" ry="190" fill="#C8A028" opacity=".04"/>
+  <!-- sparkle particles -->
+  <g fill="#E8C830" opacity=".9">
+    <circle cx="115" cy="136" r="2.5"/><circle cx="295" cy="108" r="1.8"/><circle cx="215" cy="186" r="1.5"/>
+    <circle cx="440" cy="128" r="2"/><circle cx="88" cy="255" r="1.7"/><circle cx="555" cy="98" r="2.2"/>
+    <circle cx="375" cy="218" r="1.4"/><circle cx="138" cy="338" r="1.6"/><circle cx="680" cy="118" r="2"/>
+    <circle cx="520" cy="178" r="1.5"/><circle cx="775" cy="148" r="1.8"/><circle cx="898" cy="118" r="1.5"/>
+    <circle cx="1018" cy="98" r="2"/><circle cx="948" cy="218" r="1.6"/><circle cx="1098" cy="275" r="1.4"/>
+    <circle cx="430" cy="450" r="1.3"/><circle cx="600" cy="420" r="1.5"/>
+  </g>
+  <!-- sparkle bursts -->
+  <g stroke="#E8C830" opacity=".72">
+    <g transform="translate(255,158)"><line x1="0" y1="-7" x2="0" y2="7" stroke-width="1.5"/><line x1="-7" y1="0" x2="7" y2="0" stroke-width="1.5"/><line x1="-5" y1="-5" x2="5" y2="5" stroke-width="1"/><line x1="5" y1="-5" x2="-5" y2="5" stroke-width="1"/></g>
+    <g transform="translate(488,108)"><line x1="0" y1="-6" x2="0" y2="6" stroke-width="1.4"/><line x1="-6" y1="0" x2="6" y2="0" stroke-width="1.4"/><line x1="-4" y1="-4" x2="4" y2="4" stroke-width=".9"/><line x1="4" y1="-4" x2="-4" y2="4" stroke-width=".9"/></g>
+    <g transform="translate(818,175)"><line x1="0" y1="-7" x2="0" y2="7" stroke-width="1.5"/><line x1="-7" y1="0" x2="7" y2="0" stroke-width="1.5"/><line x1="-5" y1="-5" x2="5" y2="5" stroke-width="1"/><line x1="5" y1="-5" x2="-5" y2="5" stroke-width="1"/></g>
+    <g transform="translate(1048,165)"><line x1="0" y1="-5" x2="0" y2="5" stroke-width="1.3"/><line x1="-5" y1="0" x2="5" y2="0" stroke-width="1.3"/></g>
+  </g>
+  <!-- left hero text -->
+  <text x="80" y="130" fill="#C8A028" font-size="9.5" font-family="sans-serif" letter-spacing="6">NEW COLLECTION</text>
+  <line x1="80" y1="140" x2="238" y2="140" stroke="#C8A028" stroke-width="0.8" opacity=".55"/>
+  <!-- BEYOND: huge white serif -->
+  <text x="76" y="243" fill="#F0EAD5" font-size="80" font-family="Georgia,serif" font-weight="900" letter-spacing="-2">BEYOND</text>
+  <!-- LUXURY: huge gold serif -->
+  <text x="76" y="334" fill="#C8A028" font-size="80" font-family="Georgia,serif" font-weight="900" letter-spacing="-2">LUXURY</text>
+  <!-- Japanese subtitle -->
+  <text x="80" y="370" fill="rgba(240,234,213,.62)" font-size="12.5" font-family="sans-serif">日常を超越する、揺るぎない存在感。</text>
+  <!-- SHOP NOW button (bordered) -->
+  <rect x="80" y="390" width="158" height="42" rx="0" fill="none" stroke="#F0EAD5" stroke-width="1.5"/>
+  <text x="159" y="415" fill="#F0EAD5" font-size="11" font-family="sans-serif" text-anchor="middle" letter-spacing="2">SHOP NOW →</text>
+
+  <!-- MAX 90% OFF badge (gold circle, top right) -->
+  <circle cx="1098" cy="162" r="58" fill="#C8A028"/>
+  <circle cx="1098" cy="162" r="54" fill="none" stroke="#E2BC45" stroke-width="1" opacity=".5"/>
+  <text x="1098" y="147" fill="#0A0806" font-size="10" font-family="sans-serif" text-anchor="middle" font-weight="700" letter-spacing="1">MAX</text>
+  <text x="1098" y="170" fill="#0A0806" font-size="22" font-family="sans-serif" text-anchor="middle" font-weight="900">90%</text>
+  <text x="1098" y="188" fill="#0A0806" font-size="10" font-family="sans-serif" text-anchor="middle" font-weight="700">OFF</text>
+
+  <!-- Slide indicator bar (right edge) -->
+  <line x1="1168" y1="305" x2="1168" y2="475" stroke="rgba(240,234,213,.18)" stroke-width="1"/>
+  <rect x="1162" y="312" width="12" height="20" rx="1" fill="rgba(200,160,40,.55)"/>
+  <text x="1168" y="348" fill="rgba(240,234,213,.38)" font-size="9.5" font-family="sans-serif" text-anchor="middle">02</text>
+  <text x="1168" y="384" fill="rgba(240,234,213,.38)" font-size="9.5" font-family="sans-serif" text-anchor="middle">03</text>
+  <text x="1168" y="418" fill="rgba(240,234,213,.38)" font-size="9.5" font-family="sans-serif" text-anchor="middle">04</text>
+  <text x="1168" y="454" fill="rgba(240,234,213,.38)" font-size="9.5" font-family="sans-serif" text-anchor="middle">05</text>
+
+  <!-- RIGHT: Large black leather bag (croc) -->
+  <!-- handles -->
+  <path d="M744,208 Q784,152 835,152 Q886,152 926,208" stroke="#1C1412" stroke-width="14" fill="none" stroke-linecap="round"/>
+  <!-- bag body -->
+  <rect x="716" y="204" width="234" height="222" rx="6" fill="#0E0C0C"/>
+  <!-- croc horizontal texture -->
+  <line x1="717" y1="238" x2="949" y2="238" stroke="#1A1414" stroke-width="1.5"/>
+  <line x1="717" y1="263" x2="949" y2="263" stroke="#1A1414" stroke-width="1.5"/>
+  <line x1="717" y1="288" x2="949" y2="288" stroke="#1A1414" stroke-width="1.5"/>
+  <line x1="717" y1="313" x2="949" y2="313" stroke="#1A1414" stroke-width="1.5"/>
+  <line x1="717" y1="338" x2="949" y2="338" stroke="#1A1414" stroke-width="1.5"/>
+  <line x1="717" y1="363" x2="949" y2="363" stroke="#1A1414" stroke-width="1.5"/>
+  <line x1="717" y1="388" x2="949" y2="388" stroke="#1A1414" stroke-width="1.5"/>
+  <!-- croc vertical staggered pattern -->
+  <line x1="742" y1="238" x2="742" y2="263" stroke="#180E0E" stroke-width="0.8" opacity=".9"/>
+  <line x1="768" y1="263" x2="768" y2="288" stroke="#180E0E" stroke-width="0.8" opacity=".9"/>
+  <line x1="794" y1="238" x2="794" y2="263" stroke="#180E0E" stroke-width="0.8" opacity=".9"/>
+  <line x1="820" y1="263" x2="820" y2="288" stroke="#180E0E" stroke-width="0.8" opacity=".9"/>
+  <line x1="846" y1="238" x2="846" y2="263" stroke="#180E0E" stroke-width="0.8" opacity=".9"/>
+  <line x1="872" y1="263" x2="872" y2="288" stroke="#180E0E" stroke-width="0.8" opacity=".9"/>
+  <line x1="898" y1="238" x2="898" y2="263" stroke="#180E0E" stroke-width="0.8" opacity=".9"/>
+  <line x1="924" y1="263" x2="924" y2="288" stroke="#180E0E" stroke-width="0.8" opacity=".9"/>
+  <!-- gold clasp/hardware -->
+  <rect x="817" y="204" width="42" height="16" rx="3" fill="#C8A028"/>
+  <rect x="821" y="208" width="34" height="8" rx="2" fill="#A88820"/>
+  <!-- bag trim gold line -->
+  <line x1="716" y1="220" x2="950" y2="220" stroke="#C8A028" stroke-width="0.6" opacity=".6"/>
+
+  <!-- Chronograph Watch (lower left of product area) -->
+  <rect x="680" y="406" width="22" height="20" rx="4" fill="#1A1410"/>
+  <circle cx="691" cy="454" r="44" fill="#1A1614"/>
+  <circle cx="691" cy="454" r="38" fill="#100E0C"/>
+  <circle cx="691" cy="454" r="32" fill="#0A0806"/>
+  <line x1="691" y1="420" x2="691" y2="426" stroke="#888" stroke-width="1.5"/>
+  <line x1="727" y1="454" x2="721" y2="454" stroke="#888" stroke-width="1.5"/>
+  <line x1="691" y1="488" x2="691" y2="482" stroke="#888" stroke-width="1.5"/>
+  <line x1="655" y1="454" x2="661" y2="454" stroke="#888" stroke-width="1.5"/>
+  <circle cx="675" cy="454" r="9" fill="#141210" stroke="#2A2218" stroke-width="1"/>
+  <circle cx="706" cy="442" r="8" fill="#141210" stroke="#2A2218" stroke-width="1"/>
+  <line x1="691" y1="454" x2="691" y2="428" stroke="#DDD" stroke-width="1.8"/>
+  <line x1="691" y1="454" x2="707" y2="460" stroke="#C8A028" stroke-width="1.5"/>
+  <circle cx="691" cy="454" r="3" fill="#888"/>
+  <rect x="729" y="451" width="8" height="6" rx="2" fill="#1A1614"/>
+  <rect x="680" y="496" width="22" height="20" rx="4" fill="#1A1410"/>
+
+  <!-- Triangle-logo wallet (right, mid) -->
+  <rect x="990" y="338" width="142" height="98" rx="4" fill="#0C0A0A"/>
+  <line x1="1061" y1="338" x2="1061" y2="436" stroke="#181414" stroke-width="1"/>
+  <polygon points="1061,354 1091,400 1031,400" stroke="#C8A028" stroke-width="1.8" fill="none"/>
+  <line x1="1046" y1="400" x2="1076" y2="400" stroke="#C8A028" stroke-width="1.8"/>
+  <line x1="998" y1="412" x2="1052" y2="412" stroke="#252020" stroke-width="1"/>
+  <line x1="998" y1="422" x2="1052" y2="422" stroke="#252020" stroke-width="1"/>
+  <rect x="992" y="340" width="138" height="94" rx="3" fill="none" stroke="#1C1818" stroke-width="1.5"/>
+
+  <!-- Black textured sneakers (bottom right) -->
+  <ellipse cx="1066" cy="530" rx="116" ry="15" fill="#0A0808"/>
+  <path d="M952,518 Q966,478 1006,460 Q1046,446 1086,450 Q1126,452 1156,468 Q1178,480 1180,518 Z" fill="#0E0C0C"/>
+  <path d="M952,518 Q966,502 1000,500 Q1040,496 1080,494 Q1120,494 1155,504 L1180,518 Q1155,514 1080,516 Q1000,516 952,518 Z" fill="#141010"/>
+  <path d="M1024,458 Q1036,445 1046,458 L1042,518 L1028,518 Z" fill="#161212"/>
+  <line x1="1028" y1="468" x2="1044" y2="468" stroke="#333" stroke-width="2"/>
+  <line x1="1028" y1="480" x2="1044" y2="480" stroke="#333" stroke-width="2"/>
+  <line x1="1028" y1="492" x2="1044" y2="492" stroke="#333" stroke-width="2"/>
+  <line x1="1028" y1="504" x2="1044" y2="504" stroke="#333" stroke-width="2"/>
+  <path d="M975,504 Q1010,492 1050,498 Q1078,502 1105,508" stroke="#C8A028" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <rect x="1148" y="470" width="35" height="48" rx="4" fill="#0A0808"/>
+  <!-- texture lines -->
+  <path d="M972,508 Q1010,494 1055,498" stroke="#1A1414" stroke-width="2" fill="none"/>
+  <path d="M980,496 Q1015,484 1058,490" stroke="#1A1414" stroke-width="1.5" fill="none"/>
+
+  <!-- bottom 4-column grid -->
+  <rect y="562" width="1200" height="100" fill="#0C0A0A"/>
+  <line x1="0" y1="562" x2="1200" y2="562" stroke="#C8A028" stroke-width="0.8" opacity=".5"/>
+  <line x1="300" y1="572" x2="300" y2="654" stroke="#2A2020" stroke-width="1"/>
+  <line x1="600" y1="572" x2="600" y2="654" stroke="#2A2020" stroke-width="1"/>
+  <line x1="900" y1="572" x2="900" y2="654" stroke="#2A2020" stroke-width="1"/>
+  <!-- TIME SALE -->
+  <text x="150" y="592" fill="#666" font-size="9" font-family="sans-serif" text-anchor="middle" letter-spacing="3">TIME SALE</text>
+  <text x="150" y="618" fill="#C8A028" font-size="22" font-family="sans-serif" text-anchor="middle" font-weight="700">05:23:47</text>
+  <text x="150" y="642" fill="#555" font-size="9" font-family="sans-serif" text-anchor="middle">終了まで残り時間</text>
+  <!-- MAX OFF -->
+  <text x="450" y="592" fill="#666" font-size="9" font-family="sans-serif" text-anchor="middle" letter-spacing="3">SALE ITEMS</text>
+  <text x="450" y="616" fill="#F0EAD5" font-size="16" font-family="sans-serif" text-anchor="middle" font-weight="700">MAX</text>
+  <text x="450" y="635" fill="#C8A028" font-size="16" font-family="sans-serif" text-anchor="middle" font-weight="700">90% OFF</text>
+  <!-- RANKING -->
+  <text x="750" y="592" fill="#666" font-size="9" font-family="sans-serif" text-anchor="middle" letter-spacing="3">RANKING</text>
+  <polygon points="750,604 742,616 746,620 750,614 754,620 758,616" fill="#C8A028"/>
+  <text x="750" y="640" fill="#F0EAD5" font-size="12.5" font-family="sans-serif" text-anchor="middle">週間売上 TOP 3</text>
+  <!-- MEMBERSHIP -->
+  <text x="1050" y="592" fill="#666" font-size="9" font-family="sans-serif" text-anchor="middle" letter-spacing="3">MEMBERSHIP</text>
+  <text x="1050" y="620" fill="#C8A028" font-size="18" font-family="sans-serif" text-anchor="middle" font-weight="700">1,000 pt</text>
+  <text x="1050" y="642" fill="#555" font-size="9" font-family="sans-serif" text-anchor="middle">新規会員登録ボーナス</text>
+  <!-- NEW ARRIVAL strip -->
+  <rect y="662" width="1200" height="98" fill="#0A0808"/>
+  <line x1="0" y1="662" x2="1200" y2="662" stroke="#C8A028" stroke-width="0.5" opacity=".4"/>
+  <text x="30" y="686" fill="#666" font-size="9" font-family="sans-serif" letter-spacing="4">NEW ARRIVAL</text>
+  <rect x="30"  y="692" width="62" height="55" rx="2" fill="#181414"/>
+  <rect x="104" y="692" width="62" height="55" rx="2" fill="#1A1616"/>
+  <rect x="178" y="692" width="62" height="55" rx="2" fill="#181212"/>
+  <rect x="252" y="692" width="62" height="55" rx="2" fill="#1C1818"/>
+  <rect x="326" y="692" width="62" height="55" rx="2" fill="#181414"/>
+  <rect x="400" y="692" width="62" height="55" rx="2" fill="#1A1616"/>
+  <rect x="474" y="692" width="62" height="55" rx="2" fill="#181212"/>
+  <!-- simple items in thumbnails -->
+  <ellipse cx="61" cy="714" rx="14" ry="8" fill="#C8A028" opacity=".25"/>
+  <rect x="49" y="714" width="24" height="18" rx="2" fill="#0C0808"/>
+  <circle cx="135" cy="718" r="14" fill="#1A1414" stroke="#C8A028" stroke-width="1" opacity=".7"/>
+  <text x="400" y="755" fill="#555" font-size="9" font-family="sans-serif">→ 全アイテムを見る</text>
+</svg>
+          </div>
+        </div>
+      </div>
 
       <!-- LUXORA -->
       <div class="showcase-card">
@@ -251,14 +443,11 @@ a{color:inherit;text-decoration:none}
           </div>
           <div class="browser-content">
 <svg viewBox="0 0 1200 760" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
-  <!-- base black -->
   <rect width="1200" height="760" fill="#08060A"/>
-  <!-- top bar -->
   <rect width="1200" height="28" fill="#120C02"/>
   <text x="90" y="19" fill="#C8A02A" font-size="10" font-family="sans-serif">🚚 全品送料無料・最短翌日お届け</text>
   <text x="600" y="19" fill="#E8D040" font-size="11" font-family="sans-serif" text-anchor="middle" font-weight="600">本日23:59まで！年に一度の 超決算セール開催中</text>
   <text x="1170" y="19" fill="#888" font-size="10" font-family="sans-serif" text-anchor="end">ログイン　カート</text>
-  <!-- white nav -->
   <rect y="28" width="1200" height="56" fill="#fff"/>
   <line x1="0" y1="84" x2="1200" y2="84" stroke="#E5E7EB" stroke-width="1"/>
   <text x="50" y="53" fill="#111" font-size="16" font-weight="700" font-family="Georgia,serif" letter-spacing="3">LUXORA</text>
@@ -274,12 +463,9 @@ a{color:inherit;text-decoration:none}
   <text x="740" y="62" fill="#111" font-size="11.5" font-family="sans-serif">ブランド一覧</text>
   <rect x="1010" y="40" width="170" height="26" rx="4" fill="#F4F3F0" stroke="#DDD" stroke-width="1"/>
   <text x="1024" y="57" fill="#AAA" font-size="10.5" font-family="sans-serif">キーワードで探す 🔍</text>
-  <!-- hero area -->
   <rect y="84" width="1200" height="420" fill="#080606"/>
-  <!-- gold glow -->
   <ellipse cx="430" cy="300" rx="320" ry="180" fill="#C8A02A" opacity=".07"/>
   <ellipse cx="800" cy="350" rx="280" ry="160" fill="#E8A020" opacity=".05"/>
-  <!-- sparkle particles -->
   <g fill="#E8D040" opacity=".9">
     <circle cx="180" cy="130" r="2.5"/><circle cx="370" cy="105" r="1.8"/><circle cx="290" cy="185" r="1.5"/>
     <circle cx="510" cy="145" r="2"/><circle cx="100" cy="280" r="1.8"/><circle cx="620" cy="95" r="2.2"/>
@@ -287,165 +473,77 @@ a{color:inherit;text-decoration:none}
     <circle cx="720" cy="120" r="2"/><circle cx="580" cy="200" r="1.5"/><circle cx="800" cy="175" r="1.8"/>
     <circle cx="920" cy="140" r="1.4"/><circle cx="1050" cy="100" r="2"/><circle cx="970" cy="250" r="1.6"/>
     <circle cx="1100" cy="310" r="1.5"/><circle cx="860" cy="400" r="1.3"/><circle cx="1020" cy="380" r="1.8"/>
-    <circle cx="200" cy="460" r="1.4"/><circle cx="400" cy="480" r="1.6"/><circle cx="650" cy="450" r="1.5"/>
   </g>
-  <!-- sparkle bursts -->
   <g stroke="#E8D040" opacity=".75">
     <g transform="translate(330,155)"><line x1="0" y1="-7" x2="0" y2="7" stroke-width="1.5"/><line x1="-7" y1="0" x2="7" y2="0" stroke-width="1.5"/><line x1="-5" y1="-5" x2="5" y2="5" stroke-width="1"/><line x1="5" y1="-5" x2="-5" y2="5" stroke-width="1"/><circle cx="0" cy="0" r="2" fill="#E8D040" stroke="none"/></g>
     <g transform="translate(560,110)"><line x1="0" y1="-6" x2="0" y2="6" stroke-width="1.5"/><line x1="-6" y1="0" x2="6" y2="0" stroke-width="1.5"/><line x1="-4" y1="-4" x2="4" y2="4" stroke-width="1"/><line x1="4" y1="-4" x2="-4" y2="4" stroke-width="1"/><circle cx="0" cy="0" r="1.8" fill="#E8D040" stroke="none"/></g>
-    <g transform="translate(150,310)"><line x1="0" y1="-6" x2="0" y2="6" stroke-width="1.5"/><line x1="-6" y1="0" x2="6" y2="0" stroke-width="1.5"/><line x1="-4" y1="-4" x2="4" y2="4" stroke-width="1"/><line x1="4" y1="-4" x2="-4" y2="4" stroke-width="1"/><circle cx="0" cy="0" r="1.8" fill="#E8D040" stroke="none"/></g>
     <g transform="translate(850,200)"><line x1="0" y1="-7" x2="0" y2="7" stroke-width="1.5"/><line x1="-7" y1="0" x2="7" y2="0" stroke-width="1.5"/><line x1="-5" y1="-5" x2="5" y2="5" stroke-width="1"/><line x1="5" y1="-5" x2="-5" y2="5" stroke-width="1"/><circle cx="0" cy="0" r="2" fill="#E8D040" stroke="none"/></g>
-    <g transform="translate(1080,180)"><line x1="0" y1="-5" x2="0" y2="5" stroke-width="1.4"/><line x1="-5" y1="0" x2="5" y2="0" stroke-width="1.4"/><line x1="-3.5" y1="-3.5" x2="3.5" y2="3.5" stroke-width=".9"/><line x1="3.5" y1="-3.5" x2="-3.5" y2="3.5" stroke-width=".9"/><circle cx="0" cy="0" r="1.5" fill="#E8D040" stroke="none"/></g>
   </g>
-  <!-- left sale text -->
-  <text x="60" y="158" fill="#C8A02A" font-size="24" font-family="Hiragino Mincho ProN,Georgia,serif">年に一度の</text>
-  <text x="52" y="240" fill="#E8D040" font-size="66" font-family="Impact,Arial Black,sans-serif" font-weight="900" letter-spacing="-2">超決算</text>
-  <text x="40" y="350" fill="#E8D040" font-size="92" font-family="Impact,Arial Black,sans-serif" font-weight="900" letter-spacing="-3">SALE</text>
-  <!-- red stripe -->
-  <rect x="44" y="368" width="340" height="36" fill="#CC1820"/>
-  <text x="215" y="391" fill="#fff" font-size="16" font-family="sans-serif" font-weight="700" text-anchor="middle">今だけ、驚きのプライス！</text>
-  <!-- points -->
-  <text x="62" y="432" fill="#CCC" font-size="12" font-family="sans-serif">さらに！今なら全品ポイント</text>
-  <text x="250" y="434" fill="#E8D040" font-size="20" font-family="sans-serif" font-weight="900">10倍</text>
-  <text x="288" y="432" fill="#888" font-size="11" font-family="sans-serif">還元中</text>
-  <!-- 92% OFF badge -->
-  <circle cx="560" cy="215" r="76" fill="#CC1820" stroke="#E8D040" stroke-width="3"/>
-  <text x="560" y="185" fill="#E8D040" font-size="13" font-family="sans-serif" font-weight="700" text-anchor="middle">MAX</text>
-  <text x="560" y="225" fill="#E8D040" font-size="34" font-family="Impact,sans-serif" font-weight="900" text-anchor="middle">92%</text>
-  <text x="560" y="260" fill="#E8D040" font-size="18" font-family="sans-serif" font-weight="700" text-anchor="middle">OFF</text>
-  <!-- Watch -->
-  <circle cx="810" cy="240" r="76" fill="#181412" stroke="#666" stroke-width="4"/>
-  <circle cx="810" cy="240" r="66" fill="#0E0C0A" stroke="#444" stroke-width="1.5"/>
-  <circle cx="810" cy="240" r="8" fill="#666"/>
-  <line x1="810" y1="240" x2="810" y2="182" stroke="#888" stroke-width="2.5"/>
-  <line x1="810" y1="240" x2="848" y2="252" stroke="#C8A02A" stroke-width="2"/>
-  <rect x="882" y="232" width="10" height="16" rx="2" fill="#888"/>
-  <rect x="792" y="162" width="36" height="20" rx="4" fill="#222" stroke="#444" stroke-width="1"/>
-  <rect x="792" y="298" width="36" height="20" rx="4" fill="#222" stroke="#444" stroke-width="1"/>
-  <text x="810" y="248" fill="#777" font-size="7" font-family="sans-serif" text-anchor="middle" letter-spacing="1">LUXORA</text>
-  <!-- Sneaker -->
-  <g transform="translate(640,335)">
-    <ellipse cx="95" cy="88" rx="105" ry="16" fill="#282420" opacity=".7"/>
-    <rect x="-2" y="68" width="198" height="24" rx="7" fill="#F0EBE0"/>
-    <path d="M-8,68 Q18,20 76,14 Q134,8 196,48 Q204,64 208,72 L-4,72Z" fill="#E0D8C8"/>
-    <path d="M56,58 Q95,28 154,43" stroke="#C8A02A" stroke-width="2.5" fill="none"/>
-    <path d="M-8,68 Q10,40 38,24 Q58,16 76,14" fill="#D4CEC0" stroke="#BBB" stroke-width="1"/>
-    <path d="M68,44 Q95,34 128,40" stroke="#fff" stroke-width="1.5" fill="none" opacity=".7"/>
-    <path d="M64,52 Q95,42 132,47" stroke="#fff" stroke-width="1.5" fill="none" opacity=".7"/>
-    <path d="M188,44 Q206,58 208,72" fill="#C8A02A" stroke="none" opacity=".7"/>
-    <text x="98" y="73" fill="#888" font-size="6.5" font-family="sans-serif" text-anchor="middle" letter-spacing="1">LUXORA</text>
-  </g>
-  <!-- Jacket -->
-  <g transform="translate(960,110)">
-    <path d="M38,0 L28,175 L196,175 L186,0 L158,0 L148,38 L118,18 L88,38 L78,0Z" fill="#18140E" stroke="#2C2620" stroke-width="1.5"/>
-    <path d="M78,0 L88,38 L118,18 L148,38 L158,0" fill="#22180E" stroke="#333" stroke-width="1"/>
-    <line x1="118" y1="20" x2="118" y2="175" stroke="#444" stroke-width="2"/>
-    <line x1="66" y1="38" x2="48" y2="175" stroke="#1E1A14" stroke-width="1.5"/>
-    <line x1="170" y1="38" x2="188" y2="175" stroke="#1E1A14" stroke-width="1.5"/>
-    <path d="M28,28 L0,155 L26,155 L38,58Z" fill="#18140E" stroke="#2C2620" stroke-width="1"/>
-    <path d="M186,28 L214,155 L188,155 L176,58Z" fill="#18140E" stroke="#2C2620" stroke-width="1"/>
-    <rect x="48" y="106" width="32" height="23" rx="3" fill="#14100A" stroke="#2C2620" stroke-width="1"/>
-    <rect x="140" y="106" width="32" height="23" rx="3" fill="#14100A" stroke="#2C2620" stroke-width="1"/>
-  </g>
-  <!-- Gold luggage -->
-  <g transform="translate(1100,145)">
-    <rect x="0" y="28" width="86" height="155" rx="7" fill="#9A6E08" stroke="#C8A02A" stroke-width="2"/>
-    <rect x="0" y="28" width="86" height="155" rx="7" fill="none" stroke="#C8A02A" stroke-width="1" opacity=".3"/>
-    <line x1="0" y1="74" x2="86" y2="74" stroke="#C8A02A" stroke-width=".8" opacity=".4"/>
-    <line x1="0" y1="106" x2="86" y2="106" stroke="#C8A02A" stroke-width=".8" opacity=".4"/>
-    <line x1="0" y1="138" x2="86" y2="138" stroke="#C8A02A" stroke-width=".8" opacity=".4"/>
-    <rect x="30" y="8" width="26" height="22" rx="10" fill="none" stroke="#C8A02A" stroke-width="2.5"/>
-    <rect x="30" y="92" width="26" height="18" rx="2" fill="#C8A02A" opacity=".3"/>
-    <line x1="43" y1="28" x2="43" y2="183" stroke="#C8A02A" stroke-width="1.2"/>
-    <circle cx="12" cy="192" r="9" fill="#222" stroke="#444" stroke-width="1.5"/>
-    <circle cx="74" cy="192" r="9" fill="#222" stroke="#444" stroke-width="1.5"/>
-    <line x1="36" y1="-16" x2="36" y2="8" stroke="#777" stroke-width="3.5"/>
-    <line x1="50" y1="-16" x2="50" y2="8" stroke="#777" stroke-width="3.5"/>
-    <rect x="26" y="-24" width="34" height="10" rx="4" fill="#555" stroke="#777" stroke-width="1"/>
-  </g>
-  <!-- Timer -->
-  <rect x="600" y="390" width="255" height="82" rx="4" fill="#100804" stroke="#C8A02A" stroke-width="1.5"/>
-  <text x="612" y="410" fill="#C8A02A" font-size="10.5" font-family="sans-serif" font-weight="500">⚡ 終了まで残りわずか！</text>
-  <rect x="608" y="416" width="46" height="46" rx="3" fill="#1A1008"/>
-  <text x="631" y="446" fill="#E8D040" font-size="24" font-family="monospace" font-weight="700" text-anchor="middle">00</text>
-  <text x="631" y="457" fill="#777" font-size="8.5" font-family="sans-serif" text-anchor="middle">日</text>
-  <text x="661" y="443" fill="#E8D040" font-size="20" font-family="sans-serif">·</text>
-  <rect x="668" y="416" width="46" height="46" rx="3" fill="#1A1008"/>
-  <text x="691" y="446" fill="#E8D040" font-size="24" font-family="monospace" font-weight="700" text-anchor="middle">23</text>
-  <text x="691" y="457" fill="#777" font-size="8.5" font-family="sans-serif" text-anchor="middle">時間</text>
-  <text x="721" y="443" fill="#E8D040" font-size="20" font-family="sans-serif">·</text>
-  <rect x="728" y="416" width="46" height="46" rx="3" fill="#1A1008"/>
-  <text x="751" y="446" fill="#E8D040" font-size="24" font-family="monospace" font-weight="700" text-anchor="middle">45</text>
-  <text x="751" y="457" fill="#777" font-size="8.5" font-family="sans-serif" text-anchor="middle">分</text>
-  <text x="781" y="443" fill="#E8D040" font-size="20" font-family="sans-serif">·</text>
-  <rect x="788" y="416" width="46" height="46" rx="3" fill="#1A1008"/>
-  <text x="811" y="446" fill="#E8D040" font-size="24" font-family="monospace" font-weight="700" text-anchor="middle">19</text>
-  <text x="811" y="457" fill="#777" font-size="8.5" font-family="sans-serif" text-anchor="middle">秒</text>
+  <!-- hero text -->
+  <text x="76" y="164" fill="#E8D040" font-size="9" font-family="sans-serif" letter-spacing="5" font-weight="700">NEW SEASON SALE 2026</text>
+  <text x="72" y="246" fill="#F4EED8" font-size="65" font-family="Georgia,serif" font-weight="900" letter-spacing="-1">超決算</text>
+  <text x="72" y="322" fill="#F4EED8" font-size="65" font-family="Georgia,serif" font-weight="900" letter-spacing="-1">セール</text>
+  <text x="72" y="375" fill="rgba(240,234,213,.6)" font-size="14" font-family="sans-serif">最大 <tspan fill="#E8D040" font-weight="700">90%OFF</tspan>　期間限定</text>
+  <rect x="72" y="395" width="176" height="44" rx="0" fill="#C8A02A"/>
+  <text x="160" y="421" fill="#0A0806" font-size="13" font-family="sans-serif" text-anchor="middle" font-weight="700" letter-spacing="1">今すぐ買い物する →</text>
+  <!-- countdown timer -->
+  <text x="72" y="460" fill="rgba(240,234,213,.38)" font-size="10" font-family="sans-serif" letter-spacing="2">SALE ENDS IN</text>
+  <text x="72" y="490" fill="#E8D040" font-size="26" font-family="sans-serif" font-weight="700" letter-spacing="3">23:47:12</text>
+  <!-- right product illustrations -->
+  <!-- watch -->
+  <circle cx="750" cy="250" r="72" fill="#0E0C0A" stroke="#2A2010" stroke-width="3"/>
+  <circle cx="750" cy="250" r="62" fill="#080604"/>
+  <circle cx="750" cy="250" r="54" fill="#0C0A06"/>
+  <line x1="750" y1="198" x2="750" y2="206" stroke="#888" stroke-width="2"/><line x1="802" y1="250" x2="794" y2="250" stroke="#888" stroke-width="2"/>
+  <line x1="750" y1="302" x2="750" y2="294" stroke="#888" stroke-width="2"/><line x1="698" y1="250" x2="706" y2="250" stroke="#888" stroke-width="2"/>
+  <line x1="750" y1="250" x2="750" y2="214" stroke="#EEE" stroke-width="2.5"/>
+  <line x1="750" y1="250" x2="774" y2="260" stroke="#C8A02A" stroke-width="2"/>
+  <circle cx="750" cy="250" r="4" fill="#888"/>
+  <rect x="738" y="176" width="24" height="24" rx="5" fill="#1A1610"/>
+  <rect x="738" y="300" width="24" height="24" rx="5" fill="#1A1610"/>
+  <!-- sneaker -->
+  <ellipse cx="960" cy="368" rx="130" ry="18" fill="#080406"/>
+  <path d="M838,354 Q848,304 888,284 Q928,268 968,272 Q1008,274 1042,292 Q1076,306 1086,354 Z" fill="#0C0A0A"/>
+  <path d="M838,354 Q860,344 920,342 Q980,340 1054,348 L1086,354 Q1054,350 980,352 Q860,352 838,354 Z" fill="#181414"/>
+  <path d="M925,274 Q936,260 948,274 L942,354 L930,354 Z" fill="#141010"/>
+  <line x1="930" y1="284" x2="944" y2="284" stroke="#2A2020" stroke-width="2.5"/>
+  <line x1="930" y1="296" x2="944" y2="296" stroke="#2A2020" stroke-width="2.5"/>
+  <line x1="930" y1="308" x2="944" y2="308" stroke="#2A2020" stroke-width="2.5"/>
+  <path d="M868,340 Q908,326 950,330 Q984,334 1018,342" stroke="#C8A02A" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <rect x="1056" y="296" width="32" height="58" rx="4" fill="#080406"/>
+  <!-- jacket -->
+  <path d="M790,420 L752,438 L756,504 L862,504 L866,438 Z" fill="#1A1410"/>
+  <path d="M790,420 L766,432 L774,504 L808,504 L808,448 L806,428 Z" fill="#141010"/>
+  <path d="M790,420 L814,432 L806,504 L808,504 L808,448 L806,428 Z" fill="#141010"/>
+  <line x1="790" y1="420" x2="790" y2="504" stroke="#222" stroke-width="1.5"/>
+  <circle cx="790" cy="440" r="3" fill="#C8A02A"/>
+  <circle cx="790" cy="458" r="3" fill="#C8A02A"/>
+  <circle cx="790" cy="476" r="3" fill="#C8A02A"/>
+  <!-- luggage -->
+  <rect x="920" y="420" width="120" height="100" rx="5" fill="#0E0C0A"/>
+  <rect x="950" y="408" width="60" height="14" rx="5" fill="none" stroke="#2A2018" stroke-width="3"/>
+  <line x1="921" y1="450" x2="1039" y2="450" stroke="#1A1610" stroke-width="1.5"/>
+  <line x1="921" y1="470" x2="1039" y2="470" stroke="#1A1610" stroke-width="1.5"/>
+  <line x1="921" y1="490" x2="1039" y2="490" stroke="#1A1610" stroke-width="1.5"/>
+  <rect x="966" y="438" width="28" height="18" rx="3" fill="#C8A02A"/>
   <!-- category grid -->
-  <rect y="504" width="1200" height="124" fill="#0E0A04"/>
-  <line x1="0" y1="504" x2="1200" y2="504" stroke="#C8A02A" stroke-width="1" opacity=".3"/>
-  <!-- 5 cats -->
-  <rect x="6" y="512" width="172" height="108" rx="3" fill="#181006" stroke="#2A2010" stroke-width="1"/>
-  <text x="18" y="534" fill="#BBB" font-size="11.5" font-family="sans-serif">アパレル</text>
-  <text x="18" y="550" fill="#777" font-size="9.5" font-family="sans-serif">最大</text>
-  <text x="16" y="578" fill="#E8D040" font-size="26" font-family="Impact,sans-serif" font-weight="900">80%</text>
-  <text x="74" y="581" fill="#E8D040" font-size="13" font-family="sans-serif" font-weight="700">OFF</text>
-  <rect x="16" y="590" width="82" height="18" rx="3" fill="#C8A02A"/>
-  <text x="57" y="602" fill="#0A0806" font-size="10" font-family="sans-serif" font-weight="600" text-anchor="middle">今すぐチェック›</text>
-
-  <rect x="184" y="512" width="172" height="108" rx="3" fill="#181006" stroke="#2A2010" stroke-width="1"/>
-  <text x="196" y="534" fill="#BBB" font-size="11.5" font-family="sans-serif">腕時計</text>
-  <text x="196" y="550" fill="#777" font-size="9.5" font-family="sans-serif">最大</text>
-  <text x="194" y="578" fill="#E8D040" font-size="26" font-family="Impact,sans-serif" font-weight="900">85%</text>
-  <text x="252" y="581" fill="#E8D040" font-size="13" font-family="sans-serif" font-weight="700">OFF</text>
-  <rect x="194" y="590" width="82" height="18" rx="3" fill="#C8A02A"/>
-  <text x="235" y="602" fill="#0A0806" font-size="10" font-family="sans-serif" font-weight="600" text-anchor="middle">今すぐチェック›</text>
-
-  <rect x="362" y="512" width="172" height="108" rx="3" fill="#181006" stroke="#2A2010" stroke-width="1"/>
-  <text x="374" y="534" fill="#BBB" font-size="11.5" font-family="sans-serif">バッグ</text>
-  <text x="374" y="550" fill="#777" font-size="9.5" font-family="sans-serif">最大</text>
-  <text x="372" y="578" fill="#E8D040" font-size="26" font-family="Impact,sans-serif" font-weight="900">70%</text>
-  <text x="430" y="581" fill="#E8D040" font-size="13" font-family="sans-serif" font-weight="700">OFF</text>
-  <rect x="372" y="590" width="82" height="18" rx="3" fill="#C8A02A"/>
-  <text x="413" y="602" fill="#0A0806" font-size="10" font-family="sans-serif" font-weight="600" text-anchor="middle">今すぐチェック›</text>
-
-  <rect x="540" y="512" width="172" height="108" rx="3" fill="#181006" stroke="#2A2010" stroke-width="1"/>
-  <text x="552" y="534" fill="#BBB" font-size="11.5" font-family="sans-serif">シューズ</text>
-  <text x="552" y="550" fill="#777" font-size="9.5" font-family="sans-serif">最大</text>
-  <text x="550" y="578" fill="#E8D040" font-size="26" font-family="Impact,sans-serif" font-weight="900">75%</text>
-  <text x="608" y="581" fill="#E8D040" font-size="13" font-family="sans-serif" font-weight="700">OFF</text>
-  <rect x="550" y="590" width="82" height="18" rx="3" fill="#C8A02A"/>
-  <text x="591" y="602" fill="#0A0806" font-size="10" font-family="sans-serif" font-weight="600" text-anchor="middle">今すぐチェック›</text>
-
-  <rect x="718" y="512" width="172" height="108" rx="3" fill="#181006" stroke="#2A2010" stroke-width="1"/>
-  <text x="730" y="534" fill="#BBB" font-size="10.5" font-family="sans-serif">家電・ガジェット</text>
-  <text x="730" y="550" fill="#777" font-size="9.5" font-family="sans-serif">最大</text>
-  <text x="728" y="578" fill="#E8D040" font-size="26" font-family="Impact,sans-serif" font-weight="900">92%</text>
-  <text x="786" y="581" fill="#E8D040" font-size="13" font-family="sans-serif" font-weight="700">OFF</text>
-  <rect x="728" y="590" width="82" height="18" rx="3" fill="#C8A02A"/>
-  <text x="769" y="602" fill="#0A0806" font-size="10" font-family="sans-serif" font-weight="600" text-anchor="middle">今すぐチェック›</text>
-
-  <!-- ranking -->
-  <rect x="896" y="510" width="296" height="112" rx="3" fill="#120E08" stroke="#2A2010" stroke-width="1"/>
-  <text x="908" y="532" fill="#E8D040" font-size="12" font-family="sans-serif" font-weight="700">🔥 売れ筋ランキング</text>
-  <text x="1182" y="532" fill="#888" font-size="10" font-family="sans-serif" text-anchor="end">もっと見る›</text>
-  <text x="908" y="554" fill="#E8D040" font-size="12" font-family="sans-serif" font-weight="900">1</text>
-  <rect x="924" y="541" width="34" height="24" rx="2" fill="#2A2010"/>
-  <text x="966" y="550" fill="#CCC" font-size="9.5" font-family="sans-serif">LUXORAクロノグラフウォッチ</text>
-  <text x="966" y="563" fill="#E8D040" font-size="9.5" font-family="sans-serif">¥19,800</text>
-  <text x="1010" y="563" fill="#666" font-size="8.5" font-family="sans-serif">¥64,800</text>
-  <rect x="1060" y="552" width="42" height="14" rx="2" fill="#CC1820"/>
-  <text x="1081" y="562" fill="#fff" font-size="8.5" font-family="sans-serif" text-anchor="middle">69%OFF</text>
-  <text x="908" y="585" fill="#AAA" font-size="12" font-family="sans-serif" font-weight="900">2</text>
-  <rect x="924" y="572" width="34" height="24" rx="2" fill="#2A2010"/>
-  <text x="966" y="581" fill="#CCC" font-size="9.5" font-family="sans-serif">本革プレミアムトートバッグ</text>
-  <text x="966" y="594" fill="#E8D040" font-size="9.5" font-family="sans-serif">¥14,800</text>
-  <text x="1010" y="594" fill="#666" font-size="8.5" font-family="sans-serif">¥39,800</text>
-  <rect x="1060" y="583" width="42" height="14" rx="2" fill="#CC1820"/>
-  <text x="1081" y="593" fill="#fff" font-size="8.5" font-family="sans-serif" text-anchor="middle">62%OFF</text>
-  <text x="908" y="616" fill="#777" font-size="12" font-family="sans-serif" font-weight="900">3</text>
-  <rect x="924" y="603" width="34" height="14" rx="2" fill="#2A2010"/>
-  <text x="966" y="613" fill="#CCC" font-size="9.5" font-family="sans-serif">ハイパフォーマンススニーカー</text>
+  <rect y="504" width="1200" height="124" fill="#0A0806"/>
+  <line x1="0" y1="504" x2="1200" y2="504" stroke="#2A2010" stroke-width="1"/>
+  <line x1="300" y1="516" x2="300" y2="620" stroke="#1E1A0C" stroke-width="1"/>
+  <line x1="600" y1="516" x2="600" y2="620" stroke="#1E1A0C" stroke-width="1"/>
+  <line x1="900" y1="516" x2="900" y2="620" stroke="#1E1A0C" stroke-width="1"/>
+  <text x="150" y="545" fill="#888" font-size="9" font-family="sans-serif" text-anchor="middle" letter-spacing="2">BAGS &amp; WALLETS</text>
+  <text x="150" y="572" fill="#F4EED8" font-size="13" font-family="sans-serif" text-anchor="middle">バッグ・財布</text>
+  <text x="150" y="596" fill="#C8A02A" font-size="11" font-family="sans-serif" text-anchor="middle">最大70%OFF →</text>
+  <text x="450" y="545" fill="#888" font-size="9" font-family="sans-serif" text-anchor="middle" letter-spacing="2">WATCHES</text>
+  <text x="450" y="572" fill="#F4EED8" font-size="13" font-family="sans-serif" text-anchor="middle">時計・アクセサリー</text>
+  <text x="450" y="596" fill="#C8A02A" font-size="11" font-family="sans-serif" text-anchor="middle">最大80%OFF →</text>
+  <text x="750" y="545" fill="#888" font-size="9" font-family="sans-serif" text-anchor="middle" letter-spacing="2">SHOES &amp; SNEAKERS</text>
+  <text x="750" y="572" fill="#F4EED8" font-size="13" font-family="sans-serif" text-anchor="middle">シューズ全般</text>
+  <text x="750" y="596" fill="#C8A02A" font-size="11" font-family="sans-serif" text-anchor="middle">最大65%OFF →</text>
+  <text x="1050" y="545" fill="#888" font-size="9" font-family="sans-serif" text-anchor="middle" letter-spacing="2">APPAREL</text>
+  <text x="1050" y="572" fill="#F4EED8" font-size="13" font-family="sans-serif" text-anchor="middle">アパレル一式</text>
+  <text x="1050" y="596" fill="#C8A02A" font-size="11" font-family="sans-serif" text-anchor="middle">最大90%OFF →</text>
   <!-- bundle bar -->
   <rect y="628" width="1200" height="56" fill="#180E00"/>
   <rect x="6" y="635" width="148" height="42" rx="3" fill="#CC1820"/>
@@ -453,26 +551,18 @@ a{color:inherit;text-decoration:none}
   <text x="80" y="667" fill="#fff" font-size="11.5" font-family="sans-serif" font-weight="700" text-anchor="middle">圧倒的にお得！</text>
   <text x="225" y="650" fill="#888" font-size="10" font-family="sans-serif" text-anchor="middle">2点購入で</text>
   <text x="225" y="668" fill="#E8D040" font-size="15" font-family="Impact,sans-serif" font-weight="700" text-anchor="middle">5%OFF</text>
-  <text x="292" y="661" fill="#E8D040" font-size="16" font-family="sans-serif">›</text>
   <text x="350" y="650" fill="#888" font-size="10" font-family="sans-serif" text-anchor="middle">3点購入で</text>
   <text x="350" y="668" fill="#E8D040" font-size="15" font-family="Impact,sans-serif" font-weight="700" text-anchor="middle">10%OFF</text>
-  <text x="417" y="661" fill="#E8D040" font-size="16" font-family="sans-serif">›</text>
   <text x="475" y="650" fill="#888" font-size="10" font-family="sans-serif" text-anchor="middle">5点購入で</text>
   <text x="475" y="668" fill="#E8D040" font-size="15" font-family="Impact,sans-serif" font-weight="700" text-anchor="middle">15%OFF</text>
-  <text x="542" y="661" fill="#E8D040" font-size="16" font-family="sans-serif">›</text>
   <text x="600" y="650" fill="#888" font-size="10" font-family="sans-serif" text-anchor="middle">10点以上で</text>
   <text x="600" y="668" fill="#E8D040" font-size="15" font-family="Impact,sans-serif" font-weight="700" text-anchor="middle">20%OFF</text>
-  <!-- bottom bar -->
   <rect y="684" width="1200" height="76" fill="#0E0A06"/>
   <line x1="0" y1="684" x2="1200" y2="684" stroke="#2A2010" stroke-width="1"/>
   <text x="120" y="720" fill="#888" font-size="11" font-family="sans-serif" text-anchor="middle">🚚 全品送料無料</text>
-  <text x="120" y="736" fill="#555" font-size="9" font-family="sans-serif" text-anchor="middle">全国どこでも送料無料でお届け</text>
   <text x="360" y="720" fill="#888" font-size="11" font-family="sans-serif" text-anchor="middle">📦 最短翌日お届け</text>
-  <text x="360" y="736" fill="#555" font-size="9" font-family="sans-serif" text-anchor="middle">平日14時までのご注文で当日発送</text>
   <text x="600" y="720" fill="#888" font-size="11" font-family="sans-serif" text-anchor="middle">🛡 安心の返品保証</text>
-  <text x="600" y="736" fill="#555" font-size="9" font-family="sans-serif" text-anchor="middle">30日間返品・交換OK</text>
   <text x="840" y="720" fill="#888" font-size="11" font-family="sans-serif" text-anchor="middle">☎ カスタマーサポート</text>
-  <text x="840" y="736" fill="#555" font-size="9" font-family="sans-serif" text-anchor="middle">365日対応の安心サポート</text>
 </svg>
           </div>
         </div>
@@ -489,10 +579,8 @@ a{color:inherit;text-decoration:none}
           <div class="browser-content">
 <svg viewBox="0 0 1200 760" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
   <rect width="1200" height="760" fill="#F4F2ED"/>
-  <!-- announcement bar -->
   <rect width="1200" height="34" fill="#888884"/>
   <text x="600" y="22" text-anchor="middle" fill="#fff" font-size="11.5" font-family="sans-serif" letter-spacing=".04em">税込10,000円以上のご購入で送料無料</text>
-  <!-- nav -->
   <rect y="34" width="1200" height="64" fill="#F4F2ED"/>
   <line x1="0" y1="98" x2="1200" y2="98" stroke="#DEDAD2" stroke-width="1"/>
   <text x="58" y="75" fill="#1A1712" font-size="20" font-weight="700" letter-spacing="3" font-family="Georgia,serif">TSUKI</text>
@@ -504,18 +592,13 @@ a{color:inherit;text-decoration:none}
   <text x="990" y="72" fill="#1A1712" font-size="12" font-family="sans-serif">🔍 検索</text>
   <text x="1058" y="72" fill="#1A1712" font-size="12" font-family="sans-serif">ログイン</text>
   <text x="1140" y="72" fill="#1A1712" font-size="12" font-family="sans-serif">カート（0）</text>
-  <!-- hero bg -->
   <rect y="98" width="1200" height="390" fill="#6A6658"/>
-  <!-- shadow/depth overlay -->
   <rect y="98" width="1200" height="390" fill="url(#tsukiGrad)" opacity=".4"/>
   <defs>
     <linearGradient id="tsukiGrad" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#3A3428" stop-opacity=".6"/>
-      <stop offset="0.4" stop-color="#3A3428" stop-opacity=".2"/>
-      <stop offset="1" stop-color="#3A3428" stop-opacity=".5"/>
+      <stop offset="0" stop-color="#3A3428" stop-opacity=".6"/><stop offset="0.4" stop-color="#3A3428" stop-opacity=".2"/><stop offset="1" stop-color="#3A3428" stop-opacity=".5"/>
     </linearGradient>
   </defs>
-  <!-- plant left -->
   <line x1="42" y1="488" x2="42" y2="130" stroke="#2E3C1C" stroke-width="2.5" opacity=".6"/>
   <ellipse cx="42" cy="182" rx="26" ry="12" fill="#3E5228" opacity=".7" transform="rotate(-35,42,182)"/>
   <ellipse cx="42" cy="222" rx="30" ry="12" fill="#425630" opacity=".65" transform="rotate(24,42,222)"/>
@@ -523,61 +606,45 @@ a{color:inherit;text-decoration:none}
   <ellipse cx="42" cy="302" rx="24" ry="11" fill="#3E5430" opacity=".6" transform="rotate(36,42,302)"/>
   <ellipse cx="42" cy="342" rx="20" ry="10" fill="#385026" opacity=".55" transform="rotate(-18,42,342)"/>
   <rect x="24" y="477" width="36" height="11" rx="3" fill="#252018"/>
-  <!-- hero text left -->
   <text x="190" y="220" fill="#F4F0E8" font-size="32" font-family="Hiragino Mincho ProN,Georgia,serif" opacity=".95" letter-spacing="2">丁寧に、長く使えるものを。</text>
   <text x="190" y="262" fill="#F4F0E8" font-size="13" font-family="sans-serif" opacity=".8">素材とデザインにこだわった、</text>
   <text x="190" y="282" fill="#F4F0E8" font-size="13" font-family="sans-serif" opacity=".8">日常を豊かにするアイテムを揃えました。</text>
-  <!-- CTA button -->
   <rect x="190" y="310" width="152" height="40" fill="none" stroke="#F4F0E8" stroke-width="1.5" opacity=".85"/>
   <text x="266" y="334" text-anchor="middle" fill="#F4F0E8" font-size="13" font-family="sans-serif">新着商品を見る</text>
-  <!-- clothing rack rod -->
   <rect x="590" y="128" width="596" height="7" rx="3.5" fill="#2A2218" opacity=".8"/>
-  <!-- hangers + shirts (white → black gradient across 8 shirts) -->
-  <!-- shirt 1 (lightest) -->
   <line x1="640" y1="128" x2="640" y2="108" stroke="#2A2218" stroke-width="1.6" opacity=".7"/>
   <path d="M633,106 Q640,98,648,106" stroke="#2A2218" stroke-width="1.6" fill="none" opacity=".7"/>
   <rect x="612" y="126" width="55" height="118" rx="2" fill="#F7F3EE" opacity=".97"/>
-  <!-- shirt 2 -->
   <line x1="706" y1="128" x2="706" y2="108" stroke="#2A2218" stroke-width="1.6" opacity=".7"/>
   <path d="M699,106 Q706,98,714,106" stroke="#2A2218" stroke-width="1.6" fill="none" opacity=".7"/>
   <rect x="678" y="126" width="55" height="118" rx="2" fill="#EDE8DC" opacity=".97"/>
-  <!-- shirt 3 -->
   <line x1="772" y1="128" x2="772" y2="108" stroke="#2A2218" stroke-width="1.6" opacity=".7"/>
   <path d="M765,106 Q772,98,780,106" stroke="#2A2218" stroke-width="1.6" fill="none" opacity=".7"/>
   <rect x="744" y="126" width="55" height="118" rx="2" fill="#D8D2C2" opacity=".97"/>
-  <!-- shirt 4 -->
   <line x1="838" y1="128" x2="838" y2="108" stroke="#2A2218" stroke-width="1.6" opacity=".7"/>
   <path d="M831,106 Q838,98,846,106" stroke="#2A2218" stroke-width="1.6" fill="none" opacity=".7"/>
   <rect x="810" y="126" width="55" height="118" rx="2" fill="#B8B0A0" opacity=".97"/>
-  <!-- shirt 5 -->
   <line x1="904" y1="128" x2="904" y2="108" stroke="#2A2218" stroke-width="1.6" opacity=".7"/>
   <path d="M897,106 Q904,98,912,106" stroke="#2A2218" stroke-width="1.6" fill="none" opacity=".7"/>
   <rect x="876" y="126" width="55" height="118" rx="2" fill="#888278" opacity=".97"/>
-  <!-- shirt 6 -->
   <line x1="970" y1="128" x2="970" y2="108" stroke="#2A2218" stroke-width="1.6" opacity=".7"/>
   <path d="M963,106 Q970,98,978,106" stroke="#2A2218" stroke-width="1.6" fill="none" opacity=".7"/>
   <rect x="942" y="126" width="55" height="118" rx="2" fill="#585450" opacity=".97"/>
-  <!-- shirt 7 -->
   <line x1="1036" y1="128" x2="1036" y2="108" stroke="#2A2218" stroke-width="1.6" opacity=".7"/>
   <path d="M1029,106 Q1036,98,1044,106" stroke="#2A2218" stroke-width="1.6" fill="none" opacity=".7"/>
   <rect x="1008" y="126" width="55" height="118" rx="2" fill="#303030" opacity=".97"/>
-  <!-- shirt 8 (darkest) -->
   <line x1="1102" y1="128" x2="1102" y2="108" stroke="#2A2218" stroke-width="1.6" opacity=".7"/>
   <path d="M1095,106 Q1102,98,1110,106" stroke="#2A2218" stroke-width="1.6" fill="none" opacity=".7"/>
   <rect x="1074" y="126" width="55" height="118" rx="2" fill="#181614" opacity=".97"/>
-  <!-- product section -->
   <rect y="488" width="1200" height="272" fill="#EAE7DF"/>
   <text x="600" y="528" text-anchor="middle" fill="#1A1712" font-size="17" font-family="sans-serif" font-weight="500">おすすめ商品</text>
   <rect x="570" y="535" width="60" height="1" fill="#1A1712"/>
-  <!-- 6 product cards -->
   <rect x="70"  y="552" width="165" height="140" rx="3" fill="#DAD6CC"/>
   <rect x="252" y="552" width="165" height="140" rx="3" fill="#CAC6BA"/>
   <rect x="434" y="552" width="165" height="140" rx="3" fill="#D6D2C8"/>
   <rect x="616" y="552" width="165" height="140" rx="3" fill="#C8C4BC"/>
   <rect x="798" y="552" width="165" height="140" rx="3" fill="#D0CCC4"/>
   <rect x="980" y="552" width="165" height="140" rx="3" fill="#D4D0C8"/>
-  <!-- product illustrations -->
-  <!-- 1: Watch -->
   <rect x="144" y="557" width="16" height="20" rx="4" fill="#2A2418"/>
   <circle cx="152" cy="608" r="28" fill="#1A1410" stroke="#5A4840" stroke-width="2.5"/>
   <circle cx="152" cy="608" r="23" fill="#0A0806"/>
@@ -589,31 +656,24 @@ a{color:inherit;text-decoration:none}
   <line x1="152" y1="608" x2="165" y2="614" stroke="#C8A02A" stroke-width="1.5"/>
   <circle cx="152" cy="608" r="2.5" fill="#888"/>
   <rect x="144" y="634" width="16" height="20" rx="4" fill="#2A2418"/>
-  <!-- 2: Leather tote bag -->
   <path d="M318,594 Q318,576 334,576 Q350,576 350,594" stroke="#0A0806" stroke-width="2.5" fill="none" stroke-linecap="round"/>
   <rect x="305" y="594" width="58" height="55" rx="2" fill="#0A0806"/>
   <line x1="334" y1="594" x2="334" y2="649" stroke="#1E1A14" stroke-width="1.5"/>
   <line x1="305" y1="616" x2="363" y2="616" stroke="#1E1A14" stroke-width="1"/>
-  <!-- 3: Cotton shirt -->
   <path d="M493,580 L481,594 L491,601 L491,658 L541,658 L541,601 L551,594 L539,580 L527,574 L516,582 L505,574 Z" fill="#EAE5DA"/>
   <path d="M493,580 L505,574 L516,582 L527,574 L539,580 L528,585 L516,596 L504,585 Z" fill="#D2CDC2"/>
   <line x1="516" y1="598" x2="516" y2="658" stroke="#C8C2B6" stroke-width="1"/>
-  <circle cx="516" cy="612" r="1.8" fill="#BEB8AE"/>
-  <circle cx="516" cy="624" r="1.8" fill="#BEB8AE"/>
-  <circle cx="516" cy="636" r="1.8" fill="#BEB8AE"/>
-  <!-- 4: Aroma diffuser bottle -->
+  <circle cx="516" cy="612" r="1.8" fill="#BEB8AE"/><circle cx="516" cy="624" r="1.8" fill="#BEB8AE"/><circle cx="516" cy="636" r="1.8" fill="#BEB8AE"/>
   <line x1="698" y1="557" x2="698" y2="574" stroke="#444" stroke-width="2"/>
   <rect x="691" y="568" width="14" height="9" rx="2" fill="#333"/>
   <rect x="693" y="575" width="10" height="18" rx="2" fill="#1A1A1A"/>
   <rect x="685" y="592" width="26" height="50" rx="3" fill="#1A1A1A"/>
   <rect x="688" y="603" width="20" height="26" rx="1" fill="#252525"/>
-  <!-- 5: Gooseneck kettle -->
   <ellipse cx="877" cy="591" rx="18" ry="4" fill="#1C1C1C"/>
   <circle cx="877" cy="587" r="4" fill="#333"/>
   <ellipse cx="877" cy="622" rx="26" ry="27" fill="#1A1A1A"/>
   <path d="M903,610 Q920,602 926,588 Q932,574 938,572" stroke="#1A1A1A" stroke-width="6" fill="none" stroke-linecap="round"/>
   <path d="M851,608 Q840,608 840,624 Q840,640 851,640" stroke="#1A1A1A" stroke-width="5" fill="none" stroke-linecap="round"/>
-  <!-- 6: Ceramic vase with branch -->
   <path d="M1050,658 Q1044,640 1050,616 Q1054,604 1062,602 Q1070,604 1074,616 Q1080,640 1074,658 Z" fill="#C4B49A"/>
   <ellipse cx="1062" cy="602" rx="10" ry="3.5" fill="#B4A48A"/>
   <ellipse cx="1062" cy="600" rx="6" ry="2.5" fill="#A09080"/>
@@ -621,7 +681,6 @@ a{color:inherit;text-decoration:none}
   <line x1="1062" y1="600" x2="1067" y2="564" stroke="#3E4E28" stroke-width="1.2"/>
   <ellipse cx="1048" cy="576" rx="9" ry="4" fill="#4A5830" opacity=".85" transform="rotate(-32,1048,576)"/>
   <ellipse cx="1074" cy="571" rx="9" ry="4" fill="#3E4E28" opacity=".85" transform="rotate(28,1074,571)"/>
-  <!-- product labels -->
   <text x="70"  y="706" fill="#1A1712" font-size="11" font-family="sans-serif">ミニマルウォッチ 革ベルト</text>
   <text x="70"  y="722" fill="#1A1712" font-size="11" font-family="sans-serif">¥24,200</text>
   <text x="252" y="706" fill="#1A1712" font-size="11" font-family="sans-serif">レザートートバッグ M</text>
@@ -642,31 +701,30 @@ a{color:inherit;text-decoration:none}
 
     </div><!-- /showcase-frames -->
 
-    <p class="reveal" style="text-align:center;margin-top:24px;font-size:13px;color:rgba(240,234,213,.4);letter-spacing:.08em">いずれも、企画から設計・制作・公開まで一式対応します</p>
-    <div class="reveal" style="margin-top:40px;border:1px solid rgba(200,160,42,.3);border-radius:8px;padding:clamp(24px,4vw,44px);text-align:center;background:rgba(200,160,42,.04)">
+    <p class="reveal" style="text-align:center;margin-top:24px;font-size:13px;color:var(--text-d);letter-spacing:.08em">いずれも、企画から設計・制作・公開まで一式対応します</p>
+    <div class="reveal" style="margin-top:40px;border:1px solid var(--bdr);border-radius:8px;padding:clamp(24px,4vw,44px);text-align:center;background:rgba(200,160,40,.04)">
       <p style="font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:14px">YOUR NEXT STEP</p>
-      <p style="font-family:var(--f-disp);font-size:clamp(20px,2.8vw,32px);color:#F0EAD5;line-height:1.45;margin-bottom:8px">このクオリティのサイトで、<br>御社の問い合わせを変えてみませんか？</p>
-      <p style="font-size:14px;color:rgba(240,234,213,.55);margin-bottom:28px;line-height:1.7">信頼感・問い合わせ数・成約率。<br>すべては、最初の「見た目」から始まります。</p>
+      <p style="font-family:var(--f-disp);font-size:clamp(20px,2.8vw,32px);color:var(--text);line-height:1.45;margin-bottom:8px">このクオリティのサイトで、<br>御社の問い合わせを変えてみませんか？</p>
+      <p style="font-size:14px;color:var(--text-m);margin-bottom:28px;line-height:1.7">信頼感・問い合わせ数・成約率。<br>すべては、最初の「見た目」から始まります。</p>
       <a href="#contact" class="btn btn-gold btn-lg">まず30分、無料で話してみる →</a>
     </div>
-
-  </div><!-- /wrap -->
+  </div>
 </section>
 
 <!-- STATS -->
-<section class="s-light section" style="padding-top:0;padding-bottom:0;border-top:none">
+<section class="s-b section" style="padding-top:0;padding-bottom:0;border-top:1px solid var(--bdr)">
   <div class="wrap" style="padding-inline:0">
     <div class="stats-row reveal">
-      <div class="stat-cell"><span class="stat-num">25+</span><span class="stat-label">AI活用コンテンツを公開<br>（記事・ツール・ガイド）</span></div>
-      <div class="stat-cell"><span class="stat-num">10</span><span class="stat-label">対応できる業種<br>（小売・医療・士業・スクール等）</span></div>
+      <div class="stat-cell"><span class="stat-num" data-target="25" data-suffix="+">25+</span><span class="stat-label">AI活用コンテンツを公開<br>（記事・ツール・ガイド）</span></div>
+      <div class="stat-cell"><span class="stat-num" data-target="10">10</span><span class="stat-label">対応できる業種<br>（小売・医療・士業・スクール等）</span></div>
       <div class="stat-cell"><span class="stat-num">2〜4週</span><span class="stat-label">LP制作の標準納期<br>（規模による）</span></div>
-      <div class="stat-cell"><span class="stat-num">0</span><span class="stat-label">テンプレートの使い回し<br>（毎回ゼロから設計）</span></div>
+      <div class="stat-cell"><span class="stat-num" data-target="0">0</span><span class="stat-label">テンプレートの使い回し<br>（毎回ゼロから設計）</span></div>
     </div>
   </div>
 </section>
 
 <!-- SERVICES -->
-<section class="s-light section" id="services">
+<section class="s-a section" id="services">
   <div class="wrap">
     <div class="split-h reveal">
       <div>
@@ -701,7 +759,7 @@ a{color:inherit;text-decoration:none}
 </section>
 
 <!-- COMPARISON -->
-<section class="s-warm section">
+<section class="s-b section">
   <div class="wrap">
     <div class="split-h reveal">
       <div>
@@ -728,7 +786,7 @@ a{color:inherit;text-decoration:none}
 </section>
 
 <!-- PROCESS -->
-<section class="s-light section">
+<section class="s-c section">
   <div class="wrap">
     <div class="split-h reveal">
       <div>
@@ -747,7 +805,7 @@ a{color:inherit;text-decoration:none}
 </section>
 
 <!-- TRANSLATION -->
-<section class="s-warm section">
+<section class="s-a section">
   <div class="wrap">
     <div class="reveal">
       <p class="eyebrow">TRANSLATION</p>
@@ -766,7 +824,7 @@ a{color:inherit;text-decoration:none}
 </section>
 
 <!-- PRICING -->
-<section class="s-light section" id="pricing">
+<section class="s-b section" id="pricing">
   <div class="wrap">
     <div class="split-h reveal">
       <div>
@@ -798,7 +856,7 @@ a{color:inherit;text-decoration:none}
         <div class="p-price"><span>¥</span>99,000<span style="font-size:15px;opacity:.5">/月</span></div>
         <p class="p-sub">税別 / 内容によって変わります</p>
         <div class="p-div"></div>
-        <ul class="p-list" style="color:#6B7280">
+        <ul class="p-list">
           <li>✦ 業務フローのヒアリング・整理</li>
           <li>✦ AI活用ポイントの特定と設計</li>
           <li>✦ ツール選定・初期設定サポート</li>
@@ -813,7 +871,7 @@ a{color:inherit;text-decoration:none}
 </section>
 
 <!-- FAQ -->
-<section class="s-warm section" id="faq">
+<section class="s-c section" id="faq">
   <div class="wrap">
     <div class="reveal"><p class="eyebrow">FAQ</p><h2 class="heading" style="margin-top:12px">よくいただくご質問</h2></div>
     <div class="faq-list">
@@ -827,13 +885,13 @@ a{color:inherit;text-decoration:none}
 </section>
 
 <!-- CONTACT -->
-<section class="s-light section" id="contact">
+<section class="s-a section" id="contact">
   <div class="wrap">
     <div class="contact-grid">
       <div class="reveal">
         <p class="eyebrow">CONTACT / 30 MINUTES</p>
         <h2 class="heading" style="margin-top:12px">まずは、30分だけ<br>話してください。</h2>
-        <p style="font-size:15px;color:#6B7280;line-height:1.85;margin-top:20px">売り込みはしません。「うちの場合どこから始めるべきか」を一緒に考えます。</p>
+        <p style="font-size:15px;color:var(--text-m);line-height:1.85;margin-top:20px">売り込みはしません。「うちの場合どこから始めるべきか」を一緒に考えます。</p>
         <dl class="contact-meta">
           <div class="cm-row"><dt class="cm-dt">所要</dt><dd class="cm-dd">30分。オンラインで結構です。</dd></div>
           <div class="cm-row"><dt class="cm-dt">費用</dt><dd class="cm-dd">相談の段階では、いただきません。</dd></div>
@@ -866,7 +924,7 @@ a{color:inherit;text-decoration:none}
   <div class="footer-inner">
     <div>
       <div class="footer-logo">Aino<span>Te</span></div>
-      <div style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(240,234,213,.25);margin-top:3px">オンラインサポートサービス</div>
+      <div style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-d);margin-top:3px">オンラインサポートサービス</div>
     </div>
     <span class="footer-copy">© 2026 AinoTe アイノテ. All rights reserved.</span>
   </div>
@@ -874,28 +932,115 @@ a{color:inherit;text-decoration:none}
 
 <script>
 (function(){
-  /* canvas */
+  /* === CANVAS PARTICLES (gold luxury) === */
   var c=document.getElementById('heroCanvas'),ctx=c.getContext('2d'),P=[],raf;
   function resize(){c.width=c.offsetWidth;c.height=c.offsetHeight}
   resize();window.addEventListener('resize',resize);
-  function Pt(init){this.x=Math.random()*c.width;this.y=init?Math.random()*c.height:c.height+4;this.r=Math.random()*1.7+0.4;this.vy=Math.random()*.32+.08;this.vx=(Math.random()-.5)*.16;this.op=Math.random()*.6+.12;this.gold=Math.random()>.4}
-  Pt.prototype.upd=function(){this.y-=this.vy;this.x+=this.vx;if(this.y<-6){this.x=Math.random()*c.width;this.y=c.height+4}};
-  Pt.prototype.draw=function(){ctx.beginPath();ctx.arc(this.x,this.y,this.r,0,Math.PI*2);ctx.fillStyle=this.gold?'rgba(200,160,42,'+this.op+')':'rgba(90,130,210,'+this.op+')';ctx.fill()};
-  for(var i=0;i<88;i++)P.push(new Pt(true));
+
+  function Pt(init){
+    this.x=Math.random()*c.width;
+    this.y=init?Math.random()*c.height:c.height+4;
+    this.r=Math.random()*2.2+0.3;
+    this.vy=Math.random()*.38+.06;
+    this.vx=(Math.random()-.5)*.2;
+    this.op=Math.random()*.7+.08;
+    this.bright=Math.random()>.82; /* occasional bright spark */
+    this.twinkle=Math.random()*Math.PI*2;
+    this.twinkleSpeed=Math.random()*.04+.01;
+  }
+  Pt.prototype.upd=function(){
+    this.y-=this.vy;this.x+=this.vx;
+    this.twinkle+=this.twinkleSpeed;
+    if(this.y<-8){this.x=Math.random()*c.width;this.y=c.height+4}
+  };
+  Pt.prototype.draw=function(){
+    var op=this.op*(this.bright?.5+.5*Math.sin(this.twinkle):1);
+    ctx.beginPath();ctx.arc(this.x,this.y,this.r,0,Math.PI*2);
+    if(this.bright){
+      ctx.fillStyle='rgba(240,210,80,'+op+')';
+    } else {
+      ctx.fillStyle='rgba(200,160,40,'+op+')';
+    }
+    ctx.fill();
+    /* occasional sparkle cross for bright particles */
+    if(this.bright&&this.r>1.4){
+      ctx.strokeStyle='rgba(240,210,80,'+(op*.5)+')';
+      ctx.lineWidth=.8;
+      ctx.beginPath();ctx.moveTo(this.x-this.r*2.5,this.y);ctx.lineTo(this.x+this.r*2.5,this.y);ctx.stroke();
+      ctx.beginPath();ctx.moveTo(this.x,this.y-this.r*2.5);ctx.lineTo(this.x,this.y+this.r*2.5);ctx.stroke();
+    }
+  };
+
+  for(var i=0;i<120;i++)P.push(new Pt(true));
   var t=0;
-  function anim(){if(document.hidden){raf=requestAnimationFrame(anim);return}t+=.004;ctx.fillStyle='rgba(15,23,42,.18)';ctx.fillRect(0,0,c.width,c.height);var cx=c.width*.5+Math.sin(t)*c.width*.28,cy=c.height*.4+Math.cos(t*.7)*c.height*.18,g=ctx.createRadialGradient(cx,cy,0,cx,cy,c.width*.55);g.addColorStop(0,'rgba(25,50,140,.06)');g.addColorStop(.5,'rgba(40,80,180,.03)');g.addColorStop(1,'rgba(15,23,42,0)');ctx.fillStyle=g;ctx.fillRect(0,0,c.width,c.height);P.forEach(function(p){p.upd();p.draw()});raf=requestAnimationFrame(anim)}
+  function anim(){
+    if(document.hidden){raf=requestAnimationFrame(anim);return}
+    t+=.003;
+    /* dark bg fade with slight gold radial */
+    ctx.fillStyle='rgba(6,4,10,.2)';ctx.fillRect(0,0,c.width,c.height);
+    /* subtle gold radial glow that drifts */
+    var gx=c.width*.45+Math.sin(t*.7)*c.width*.18,gy=c.height*.5+Math.cos(t*.5)*c.height*.12;
+    var g=ctx.createRadialGradient(gx,gy,0,gx,gy,c.width*.48);
+    g.addColorStop(0,'rgba(200,160,40,.04)');
+    g.addColorStop(.5,'rgba(180,130,20,.015)');
+    g.addColorStop(1,'rgba(6,4,10,0)');
+    ctx.fillStyle=g;ctx.fillRect(0,0,c.width,c.height);
+    P.forEach(function(p){p.upd();p.draw()});
+    raf=requestAnimationFrame(anim);
+  }
   var red=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
-  ctx.fillStyle='#0F172A';ctx.fillRect(0,0,c.width,c.height);
+  ctx.fillStyle='#06040A';ctx.fillRect(0,0,c.width,c.height);
   if(!red)anim();
 
-  /* reveal */
-  if(!red){var obs=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})},{threshold:.08,rootMargin:'0px 0px -24px 0px'});document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el)})}
-  else document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('visible')});
+  /* === REVEAL ON SCROLL === */
+  if(!red){
+    var obs=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting){
+          e.target.classList.add('visible');
+          /* trigger counter if stat-num inside */
+          e.target.querySelectorAll('.stat-num[data-target]').forEach(animateCounter);
+          obs.unobserve(e.target);
+        }
+      });
+    },{threshold:.08,rootMargin:'0px 0px -24px 0px'});
+    document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el)});
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('visible')});
+  }
 
-  /* faq */
-  document.querySelectorAll('.faq-q').forEach(function(b){b.addEventListener('click',function(){var it=b.closest('.faq-item'),op=it.classList.contains('open');document.querySelectorAll('.faq-item').forEach(function(i){i.classList.remove('open');i.querySelector('.faq-q').setAttribute('aria-expanded','false')});if(!op){it.classList.add('open');b.setAttribute('aria-expanded','true')}})});
+  /* === COUNTER ANIMATION === */
+  function animateCounter(el){
+    var target=parseInt(el.getAttribute('data-target'),10);
+    var suffix=el.getAttribute('data-suffix')||'';
+    var dur=1400,start=performance.now();
+    function tick(now){
+      var p=Math.min((now-start)/dur,1);
+      var ease=1-Math.pow(1-p,3);
+      el.textContent=Math.floor(ease*target)+suffix;
+      if(p<1)requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
 
-  /* form */
-  var f=document.querySelector('.contact-form');if(f)f.addEventListener('submit',function(e){e.preventDefault();var b=this.querySelector('button[type="submit"]');b.textContent='送信完了（デモ）';b.disabled=true;b.style.opacity='.5'});
+  /* === FAQ ACCORDION === */
+  document.querySelectorAll('.faq-q').forEach(function(b){
+    b.addEventListener('click',function(){
+      var it=b.closest('.faq-item'),op=it.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(function(i){
+        i.classList.remove('open');
+        i.querySelector('.faq-q').setAttribute('aria-expanded','false');
+      });
+      if(!op){it.classList.add('open');b.setAttribute('aria-expanded','true')}
+    });
+  });
+
+  /* === FORM DEMO === */
+  var f=document.querySelector('.contact-form');
+  if(f)f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var b=this.querySelector('button[type="submit"]');
+    b.textContent='送信完了（デモ）';b.disabled=true;b.style.opacity='.5';
+  });
 })();
 </script>

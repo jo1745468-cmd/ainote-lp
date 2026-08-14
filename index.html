@@ -244,124 +244,154 @@ a{color:inherit;text-decoration:none}
 /* NAV mobile LINE button */
 .nav-mob-cta{display:none}
 
-/* ============================================
-   MOBILE OVERHAUL — max-width 640px
-   ============================================ */
-@media(max-width:640px){
+/* Mobile sticky bottom LINE bar */
+.mob-line-bar{display:none}
 
-  /* NAV */
+/* ==============================================
+   SUPER MOBILE OVERHAUL — max-width 768px
+   ============================================== */
+@media(max-width:768px){
+
+  /* ── NAV ── */
   .nav-mob-cta{
     display:flex;align-items:center;
     background:var(--gold);color:#0A0806;
-    padding:7px 14px;border-radius:100px;
-    font-size:12px;font-weight:600;letter-spacing:.04em;
+    padding:8px 16px;border-radius:100px;
+    font-size:13px;font-weight:700;letter-spacing:.02em;
     white-space:nowrap;text-decoration:none;
   }
 
-  /* HERO — fix positioning, content top-aligned */
+  /* ── STICKY BOTTOM LINE BAR ── */
+  .mob-line-bar{
+    display:block;
+    position:fixed;bottom:0;left:0;right:0;z-index:500;
+    padding:10px 16px;
+    padding-bottom:calc(10px + env(safe-area-inset-bottom,0px));
+    background:rgba(6,4,10,.96);
+    backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+    border-top:1px solid rgba(200,160,40,.2);
+  }
+  .mob-line-bar a{
+    display:flex;align-items:center;justify-content:center;gap:10px;
+    background:#06C755;
+    border-radius:14px;padding:15px 20px;
+    text-decoration:none;
+  }
+  .mob-line-bar .mlb-icon{width:24px;height:24px;flex-shrink:0}
+  .mob-line-bar .mlb-text{color:#fff;font-size:17px;font-weight:700;letter-spacing:.02em}
+  .mob-line-bar .mlb-sub{color:rgba(255,255,255,.75);font-size:11px;letter-spacing:.04em}
+
+  /* page bottom padding so bar doesn't cover content */
+  body{padding-bottom:84px}
+
+  /* ── HERO — canvas off, compact layout ── */
+  #heroCanvas{display:none}
   .hero{
+    min-height:auto;
     justify-content:flex-start;
     align-items:flex-start;
-    min-height:100svh;
     padding-top:56px;
+    background:linear-gradient(160deg,#07050D 0%,#0F0A1C 60%,#140C1A 100%);
   }
   .hero-body{
-    padding-top:clamp(40px,10vw,64px);
-    padding-bottom:clamp(40px,10vw,64px);
-    gap:20px;
+    padding-top:52px;
+    padding-bottom:72px;
+    gap:22px;
   }
-  .hero-label{font-size:11px;padding:6px 13px}
+  .hero-label{font-size:11px;padding:6px 14px;letter-spacing:.1em}
   .hero-h1{
-    font-size:clamp(38px,10.5vw,52px);
-    line-height:1.18;
+    font-size:clamp(40px,11vw,56px);
+    line-height:1.15;
+    font-weight:400;
   }
-  .hero-sub{font-size:16px;line-height:1.7;max-width:100%}
-  .hero-ctas{flex-direction:column;gap:10px}
+  .hero-sub{font-size:17px;line-height:1.75;max-width:100%;color:var(--text-m)}
+  .hero-ctas{flex-direction:column;gap:12px;margin-top:4px}
   .hero-ctas .btn{
     width:100%;justify-content:center;
-    padding:16px 24px;font-size:16px;
-    border-radius:12px;
+    padding:17px 24px;font-size:17px;font-weight:600;
+    border-radius:14px;
   }
 
-  /* SECTIONS */
-  .section{padding-block:clamp(48px,9vw,72px)}
-  .section+.section{border-top-width:1px}
-  .split-h{
-    grid-template-columns:1fr;
-    gap:14px;margin-bottom:32px;
-  }
-  .eyebrow{font-size:10px;letter-spacing:.14em}
-  .heading{font-size:clamp(22px,6.5vw,34px);line-height:1.25}
-  .body-lg{font-size:15px;line-height:1.75}
+  /* ── SECTIONS ── */
+  .section{padding-block:56px}
+  .section+.section{border-top:1px solid var(--bdr)}
+  .split-h{grid-template-columns:1fr;gap:12px;margin-bottom:28px}
+  .eyebrow{font-size:11px;letter-spacing:.14em}
+  .heading{font-size:clamp(24px,6.5vw,36px);line-height:1.2}
+  .body-lg{font-size:16px;line-height:1.8}
 
-  /* SHOWCASE */
-  .showcase-intro{margin-bottom:32px}
-  .showcase-frames{gap:28px}
+  /* ── SHOWCASE ── */
+  .showcase-intro{margin-bottom:28px}
+  .showcase-intro .heading{font-size:clamp(22px,6vw,32px)}
+  .showcase-frames{gap:24px}
   .browser-content img{
-    max-height:210px;
-    object-fit:cover;
-    object-position:top center;
+    max-height:200px;
+    object-fit:cover;object-position:top center;
     width:100%;display:block;
   }
-  .showcase-tag{font-size:11px}
+  .showcase-tag{font-size:11px;margin-bottom:4px}
+  .showcase-card p{font-size:14px}
 
-  /* STATS */
+  /* ── STATS ── */
   .stats-row{grid-template-columns:1fr 1fr}
-  .stat-cell{padding:clamp(20px,5vw,32px) clamp(10px,3vw,20px)}
+  .stat-cell{padding:24px 14px}
   .stat-cell:nth-child(2){border-right:none}
-  .stat-cell:nth-child(n+3){border-top:1px solid var(--bdr)}
-  .stat-num{font-size:clamp(34px,9vw,52px)}
-  .stat-label{font-size:11px}
+  .stat-cell:nth-child(3){border-top:1px solid var(--bdr)}
+  .stat-cell:nth-child(4){border-top:1px solid var(--bdr)}
+  .stat-num{font-size:clamp(36px,9.5vw,52px);margin-bottom:6px}
+  .stat-label{font-size:12px;line-height:1.5}
 
-  /* SERVICES */
-  .services-grid{
-    grid-template-columns:1fr;
-    margin-top:32px;
+  /* ── SERVICES ── */
+  .services-grid{grid-template-columns:1fr;margin-top:28px;gap:0}
+  .service-card{padding:24px 20px;gap:12px}
+  .svc-title{font-size:19px;line-height:1.3}
+  .svc-desc{font-size:15px;line-height:1.8}
+
+  /* ── COMPARISON TABLE — 2 columns only ── */
+  .table-wrap{margin-top:28px}
+  .compare-table{font-size:13px;min-width:0;width:100%}
+  .compare-table th:nth-child(2),
+  .compare-table td:nth-child(2),
+  .compare-table th:nth-child(3),
+  .compare-table td:nth-child(3){display:none}
+  .compare-table th,.compare-table td{padding:12px 10px}
+  .compare-table td:first-child{font-size:12px;white-space:normal;min-width:72px}
+
+  /* ── PROCESS ── */
+  .process-grid{grid-template-columns:1fr;margin-top:28px}
+  .process-step{padding:22px 20px;gap:10px}
+  .step-num{font-size:clamp(32px,9vw,44px)}
+  .step-title{font-size:18px}
+  .step-desc{font-size:14px;line-height:1.8}
+
+  /* ── TRANSLATION ── */
+  .tl-list{margin-top:28px}
+  .tl-item{grid-template-columns:1fr;gap:10px;padding-block:22px}
+  .tl-q{
+    padding-right:0;border-bottom:1px solid var(--bdr);
+    padding-bottom:12px;font-size:14px;
   }
-  .service-card{padding:22px 20px;gap:12px}
-  .svc-title{font-size:18px}
-  .svc-desc{font-size:14px}
+  .tl-a{padding-left:0;border-left:none;font-size:15px}
 
-  /* COMPARISON TABLE — mobile: show item + AinoTe only */
-  .table-wrap{margin-top:32px}
-  .compare-table{font-size:12px;min-width:0;width:100%}
-  .compare-table th:not(:first-child):not(:last-child),
-  .compare-table td:not(:first-child):not(:last-child){display:none}
-  .compare-table th,.compare-table td{padding:11px 10px}
-  .compare-table td:first-child{font-size:11px;white-space:normal}
-
-  /* PROCESS */
-  .process-grid{grid-template-columns:1fr;margin-top:32px}
-  .process-step{padding:20px}
-  .step-num{font-size:clamp(28px,8vw,40px)}
-  .step-title{font-size:17px}
-  .step-desc{font-size:13px}
-
-  /* TRANSLATION */
-  .tl-list{margin-top:32px}
-  .tl-item{padding-block:20px}
-  .tl-q{font-size:13px;color:var(--text-d)}
-  .tl-a{font-size:14px}
-
-  /* PRICING */
-  .pricing-grid{grid-template-columns:1fr;margin-top:32px}
-  .pricing-card{padding:22px 20px;gap:14px}
+  /* ── PRICING ── */
+  .pricing-grid{grid-template-columns:1fr;margin-top:28px}
+  .pricing-card{padding:24px 20px;gap:14px}
   .p-name{font-size:17px}
-  .p-price{font-size:clamp(32px,9vw,44px)}
+  .p-price{font-size:clamp(34px,9.5vw,46px)}
+  .p-sub{font-size:13px}
+  .p-list{font-size:14px}
 
-  /* FAQ */
-  .faq-list{margin-top:32px}
-  .faq-q{font-size:15px;padding-block:17px;line-height:1.45}
-  .faq-a{font-size:13px}
+  /* ── FAQ ── */
+  .faq-list{margin-top:28px}
+  .faq-q{font-size:16px;padding-block:18px;line-height:1.45;text-align:left}
+  .faq-a{font-size:14px;line-height:1.85}
 
-  /* CONTACT */
-  .contact-grid{
-    grid-template-columns:1fr;
-    gap:32px;
-  }
+  /* ── CONTACT ── */
+  .contact-grid{grid-template-columns:1fr;gap:28px}
 
-  /* FOOTER */
-  .footer-inner{flex-direction:column;align-items:flex-start;gap:10px}
+  /* ── FOOTER ── */
+  .footer-inner{flex-direction:column;align-items:flex-start;gap:8px}
+  .footer-copy{font-size:11px}
 }
 </style>
 
@@ -754,6 +784,20 @@ a{color:inherit;text-decoration:none}
     <span class="footer-copy">© 2026 AinoTe アイノテ. All rights reserved.</span>
   </div>
 </footer>
+
+<!-- Mobile sticky LINE bar -->
+<div class="mob-line-bar">
+  <a href="https://lin.ee/zxFhaIv" target="_blank" rel="noopener">
+    <svg class="mlb-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 2C6.48 2 2 6.03 2 11c0 3.28 1.84 6.16 4.62 7.93L6 22l3.27-1.72C10.13 20.74 11.05 21 12 21c5.52 0 10-4.03 10-9s-4.48-9-10-9z" fill="white"/>
+      <path d="M16.5 13h-2v-4h2v4zM13 13h-2v-4h2v4zM9.5 13h-2v-4h2v4z" fill="#06C755"/>
+    </svg>
+    <div style="display:flex;flex-direction:column;align-items:flex-start">
+      <span class="mlb-text">LINE で無料相談する</span>
+      <span class="mlb-sub">今すぐ気軽にメッセージ ▶</span>
+    </div>
+  </a>
+</div>
 
 <script>
 (function(){
